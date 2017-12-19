@@ -2,21 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/bottombaritem_calls"
+        android:id="@+id/home"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Home"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/bottombaritem_recents"
+        android:id="@+id/notification"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="Recents"
+        android:title="Notification"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/bottombaritem_trips"
+        android:id="@+id/profile"
         android:icon="@drawable/ic_person_black_24dp"
-        android:title="Trips"
+        android:title="Profile"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/help"
+        android:icon="@drawable/help"
+        android:title="Help"
+        app:showAsAction="ifRoom"/>
+
 
 </menu>

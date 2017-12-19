@@ -9,13 +9,14 @@ import android.view.ViewGroup;
 
 import com.example.hp.votingsystemv1.R;
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class callsFragment extends Fragment {
+public class NoteFragment extends Fragment {
 
 
-    public callsFragment() {
+    public NoteFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +25,7 @@ public class callsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calls, container, false);
+        return inflater.inflate(R.layout.fragment_note, container, false);
     }
 
 }
