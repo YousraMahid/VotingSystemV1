@@ -20,7 +20,7 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/help"
-        android:icon="@drawable/help"
+        android:icon="@drawable/helpicon"
         android:title="Help"
         app:showAsAction="ifRoom"/>
 
