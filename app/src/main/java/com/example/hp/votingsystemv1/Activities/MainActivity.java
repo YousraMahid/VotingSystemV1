@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.home:
-                    setTitle("FragmentTasks");
+                    setTitle("Home");
                     HomeFragment fragmentTasks = new HomeFragment();
                     FragmentTransaction fragmentTransactionTasks = getSupportFragmentManager().beginTransaction();
                     fragmentTransactionTasks.replace(R.id.frame_layout, fragmentTasks);
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.notification:
-                    setTitle("FragmentQa");
+                    setTitle("Notification");
                     NoteFragment fragmentQA = new NoteFragment();
                     FragmentTransaction fragmentTransactionQa = getSupportFragmentManager().beginTransaction();
                     fragmentTransactionQa.replace(R.id.frame_layout, fragmentQA);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.profile:
-                    setTitle("FragmentCashout");
+                    setTitle("Profile");
                     ProFragment fragmentCashOut = new ProFragment();
                     FragmentTransaction fragmentTransactionCashout = getSupportFragmentManager().beginTransaction();
                     fragmentTransactionCashout.replace(R.id.frame_layout, fragmentCashOut);
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.help:
-                    setTitle("FragmentDiscuss");
+                    setTitle("Help");
                     HelpFragment fragmentDiscuss = new HelpFragment();
                     FragmentTransaction fragmentTransactionDiscuss = getSupportFragmentManager().beginTransaction();
                     fragmentTransactionDiscuss.replace(R.id.frame_layout, fragmentDiscuss);
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        setTitle("FragmentTasks");
+        setTitle("Home");
 
         HomeFragment fragmentTasks = new HomeFragment();
         FragmentTransaction fragmentTransactionTasks = getSupportFragmentManager().beginTransaction();
