@@ -9,27 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.MainActivity"
+        <activity
+            android:name=".Activities.MainActivity"
             android:label="Home"
-            android:theme="@style/AppTheme1">
-
-        </activity>
-
-
+            android:theme="@style/AppTheme1" />
         <activity
             android:name=".Fragments.Intro"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".Activities.SigninActivity" >
+        <activity android:name=".Activities.SigninActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SignupActivit">
-
-
-        </activity>
+        <activity android:name=".Activities.SignupActivit" />
+        <activity android:name=".Activities.PollQuestion" />
     </application>
 
 </manifest>
