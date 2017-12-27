@@ -43,33 +43,33 @@ public class Intro extends AppIntro {
         super.onSlideChanged(oldFragment, newFragment);
         if(newFragment == null) return;
         if((newFragment != null)&&((SlideMaker) newFragment).getScreenId() == 0) {
-            setIndicatorColor(getResources().getColor(R.color.colorWhite), getResources().getColor(R.color.colorWhite));
+            setIndicatorColor(getResources().getColor(R.color.colorIcons), getResources().getColor(R.color.colorIcons));
             setNextArrowColor(getResources().getColor(R.color.colorSlide1));
-            setColorDoneText(getResources().getColor(R.color.colorWhite));
+            setColorDoneText(getResources().getColor(R.color.colorIcons));
             setBarColor(getResources().getColor(R.color.colorSlide1));
             setSeparatorColor(getResources().getColor(R.color.colorSlide1));
         } else if (((SlideMaker) newFragment).getScreenId() == 1) {
 
-            setIndicatorColor(getResources().getColor(R.color.colorWhite), getResources().getColor(R.color.colorWhite));
+            setIndicatorColor(getResources().getColor(R.color.colorIcons), getResources().getColor(R.color.colorIcons));
             setNextArrowColor(getResources().getColor(R.color.colorSlide2));
-            setColorDoneText(getResources().getColor(R.color.colorWhite));
+            setColorDoneText(getResources().getColor(R.color.colorIcons));
             setBarColor(getResources().getColor(R.color.colorSlide2));
             setSeparatorColor(getResources().getColor(R.color.colorSlide2));
 
 
         } else if (((SlideMaker) newFragment).getScreenId() == 2) {
 
-            setIndicatorColor(getResources().getColor(R.color.colorWhite), getResources().getColor(R.color.colorWhite));
+            setIndicatorColor(getResources().getColor(R.color.colorIcons), getResources().getColor(R.color.colorIcons));
             setNextArrowColor(getResources().getColor(R.color.colorSlide3));
-            setColorDoneText(getResources().getColor(R.color.colorWhite));
+            setColorDoneText(getResources().getColor(R.color.colorIcons));
             setBarColor(getResources().getColor(R.color.colorSlide3));
             setSeparatorColor(getResources().getColor(R.color.colorSlide3));
 
         } else if (((SlideMaker) newFragment).getScreenId() == 3) {
 
-            setIndicatorColor(getResources().getColor(R.color.colorWhite), getResources().getColor(R.color.colorWhite));
+            setIndicatorColor(getResources().getColor(R.color.colorIcons), getResources().getColor(R.color.colorIcons));
             setNextArrowColor(getResources().getColor(R.color.colorSlide4));
-            setColorDoneText(getResources().getColor(R.color.colorWhite));
+            setColorDoneText(getResources().getColor(R.color.colorIcons));
             setBarColor(getResources().getColor(R.color.colorSlide4));
             setSeparatorColor(getResources().getColor(R.color.colorSlide4));
 

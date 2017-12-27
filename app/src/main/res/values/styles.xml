@@ -25,9 +25,9 @@
         <item name="windowNoTitle">true</item>
     </style>
     <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
-        <item name="colorAccent">@color/white_70</item>
+        <item name="colorAccent">@color/colorIcons</item>
         <item name="android:textColorPrimary">@color/colorAccent</item>
-        <item name="android:background">@color/colorGrey</item>
+        <item name="android:background">@color/colorDivider</item>
     </style>
 
 
