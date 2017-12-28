@@ -40,10 +40,12 @@ public class PollAdapter extends ArrayAdapter<PollList> {
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(resource, null);
         }
-        TextView title = convertView.findViewById(R.id.title);
+        TextView title=convertView.findViewById(R.id.subject);
+        TextView question = convertView.findViewById(R.id.title);
         TextView date = convertView.findViewById(R.id.date);
         PollList resultOfArticle = objects.get(position);
         title.setText(resultOfArticle.getTitle());
+        question.setText(resultOfArticle.getQuestion());
         date.setText(resultOfArticle.getDate());
         return convertView;
     }

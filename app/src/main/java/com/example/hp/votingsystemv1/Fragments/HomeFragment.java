@@ -38,10 +38,10 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         ListView listView = view.findViewById(R.id.list_item);
         ArrayList<PollList> arrayList = new ArrayList();
-        arrayList.add(new PollList("Language ", "02/12/2107"));
-        arrayList.add(new PollList("Vacation ", "02/12/2107"));
-        arrayList.add(new PollList("University ", "02/12/2107"));
-        arrayList.add(new PollList("City ", "02/12/2107"));
+        arrayList.add(new PollList("Language ", "Q//which language do you know???\"","02/12/2107"));
+        arrayList.add(new PollList("Vacation ", "Q//which language do you know???\"","02/12/2107"));
+        arrayList.add(new PollList("University ", "Q//which language do you know???\"","02/12/2107"));
+        arrayList.add(new PollList("City ", "Q//which language do you know???\"","02/12/2107"));
         PollAdapter pollAdapter = new PollAdapter(getContext(), R.layout.item_design, arrayList);
         listView.setAdapter(pollAdapter);
 
