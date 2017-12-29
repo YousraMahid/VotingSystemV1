@@ -42,8 +42,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_horizontal_margin"
-                app:srcCompat="@drawable/ic_edit_black_24dp"
+                app:srcCompat="@drawable/camera"
                 android:layout_toRightOf="@id/profile_photo"
+
                 android:layout_alignBottom="@id/profile_photo"
                />
 
