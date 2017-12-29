@@ -13,24 +13,30 @@
         android:layout_marginBottom="10dp">
 
 
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/cover_photo"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/unnamed" />
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="@id/cover_photo"
+                app:layout_constraintLeft_toLeftOf="@id/cover_photo"
+                app:layout_constraintBottom_toBottomOf="@id/cover_photo"
+                app:layout_constraintTop_toTopOf="@id/cover_photo">
 
             <com.github.siyamed.shapeimageview.CircularImageView
                 android:id="@+id/profile_photo"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:layout_below="@id/cover_photo"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="-60dp"
                 android:padding="10dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/coverphoto"
@@ -41,11 +47,19 @@
                 android:id="@+id/fab_edit_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                app:srcCompat="@drawable/ic_edit_black_24dp"
                 android:layout_toRightOf="@id/profile_photo"
-                android:layout_alignBottom="@id/profile_photo"
-               />
+                android:layout_marginTop="50dp"
+                app:srcCompat="@drawable/ic_edit_black_24dp"
+                 />
+            </RelativeLayout>
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/relative"
+                app:layout_constraintRight_toRightOf="@id/relative"
+                app:layout_constraintTop_toBottomOf="@id/relative"
+                android:textAlignment="center"
+                android:text="username" />
 
             <!--<TextView-->
                 <!--android:layout_width="wrap_content"-->
@@ -59,14 +73,9 @@
                 <!--android:layout_alignBottom="@id/profile_photo"-->
                 <!--android:layout_marginLeft="-87dp"-->
                 <!--android:background="@drawable/edit_text_view"/>-->
-        </RelativeLayout>
+        </android.support.constraint.ConstraintLayout>
 
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:text="username" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
