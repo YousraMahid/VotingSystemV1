@@ -34,8 +34,8 @@
 
             <com.github.siyamed.shapeimageview.CircularImageView
                 android:id="@+id/profile_photo"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:padding="10dp"
                 android:scaleType="centerInside"
@@ -43,15 +43,14 @@
                 app:siRadius="200dp" />
 
 
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fab_edit_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:layout_toRightOf="@id/profile_photo"
-                android:layout_marginTop="50dp"
-                app:srcCompat="@drawable/ic_edit_black_24dp"
-                 />
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab_edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/profile_photo"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="9dp"
+                    android:src="@drawable/camera" />
             </RelativeLayout>
             <EditText
                 android:layout_width="200dp"
