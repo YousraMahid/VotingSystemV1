@@ -40,8 +40,20 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></LinearLayout>
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/start_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="description"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/end_time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="8dp"

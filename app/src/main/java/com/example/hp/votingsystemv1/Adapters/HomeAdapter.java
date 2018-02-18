@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.hp.votingsystemv1.Models.PollList;
+import com.example.hp.votingsystemv1.Models.Home;
 import com.example.hp.votingsystemv1.R;
 
 import java.util.ArrayList;
@@ -18,13 +18,13 @@ import java.util.ArrayList;
  * Created by hp on 12/26/2017.
  */
 
-public class PollAdapter extends ArrayAdapter<PollList> {
+public class HomeAdapter extends ArrayAdapter<Home> {
     private Context context;
     private int resource;
-    private ArrayList<PollList> objects;
+    private ArrayList<Home> objects;
 
 
-    public PollAdapter(Context context, int resource, ArrayList<PollList> objects) {
+    public HomeAdapter(Context context, int resource, ArrayList<Home> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
@@ -40,13 +40,15 @@ public class PollAdapter extends ArrayAdapter<PollList> {
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(resource, null);
         }
-        TextView title=convertView.findViewById(R.id.subject);
+        TextView subject=convertView.findViewById(R.id.subject);
         TextView question = convertView.findViewById(R.id.title);
-        TextView date = convertView.findViewById(R.id.date);
-        PollList resultOfArticle = objects.get(position);
-        title.setText(resultOfArticle.getTitle());
+        TextView startTime = convertView.findViewById(R.id.start_time);
+        TextView endTime = convertView.findViewById(R.id.end_time);
+        Home resultOfArticle = objects.get(position);
+        subject.setText(resultOfArticle.getSubject());
         question.setText(resultOfArticle.getQuestion());
-        date.setText(resultOfArticle.getDate());
+        startTime.setText(resultOfArticle.getStartTime());
+        endTime.setText(resultOfArticle.getEndTime());
         return convertView;
     }
 }
