@@ -1,8 +1,14 @@
 package com.example.hp.votingsystemv1.Fragments;
 
 
+import android.app.LoaderManager;
+import android.content.Context;
+import android.content.Loader;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,7 +17,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.hp.votingsystemv1.Loaders.ProfileAsyncTaskLoader;
 import com.example.hp.votingsystemv1.R;
 
 import java.util.ArrayList;
@@ -20,7 +28,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProFragment extends Fragment {
+public class ProFragment extends Fragment implements android.support.v4.app.LoaderManager.LoaderCallbacks<String> {
 
     Spinner gender;
     TextView date;
@@ -54,8 +62,17 @@ public class ProFragment extends Fragment {
         ArrayAdapter<String> departmentAdapter=new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,departments);
         department.setAdapter(departmentAdapter);
         setHasOptionsMenu(true);
+        ConnectivityManager connectivityManager=(ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info=connectivityManager.getActiveNetworkInfo();
+        if (info==null || !info.isConnected()){
+            Toast.makeText(getContext(), "there is no internet Connection", Toast.LENGTH_SHORT).show();
+        }else
+            getLoaderManager().initLoader(1,null,this).forceLoad();
         return view;
 
+
+    }
+    private void updateUI(String data){
 
     }
 
@@ -64,4 +81,29 @@ public class ProFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_item,menu);
     }
+
+
+    @Override
+    public android.support.v4.content.Loader<String> onCreateLoader(int id, Bundle args) {
+        return new ProfileAsyncTaskLoader(getContext());
+    }
+
+    @Override
+    public void onLoadFinished(android.support.v4.content.Loader<String> loader, String data) {
+        if (data != null && !data.isEmpty()){
+            updateUI(data);
+            Log.v("DATA_PROFILE",data);
+        }else
+            Toast.makeText(getContext(), "there is no internet connection1", Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void onLoaderReset(android.support.v4.content.Loader<String> loader) {
+
+    }
+
+
+
+
 }

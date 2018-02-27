@@ -10,27 +10,25 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by hp on 2/18/2018.
+ * Created by Shahida on 2/25/2018.
  */
 
-public class HomeAsyncTaskLoader extends AsyncTaskLoader<String> {
-    public HomeAsyncTaskLoader(Context context) {
+public class ProfileAsyncTaskLoader extends AsyncTaskLoader<String> {
+    public ProfileAsyncTaskLoader(Context context) {
         super(context);
     }
 
     @Override
     public String loadInBackground() {
-
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("http://awrosoft.krd/voting/voting/API/getSubjects.php")
+                .url("http://awrosoft.krd/voting/voting/API/getUserProfile.php")
                 .get()
                 .build();
 
-        Response response = null;
         try {
-            response = client.newCall(request).execute();
+            Response response = client.newCall(request).execute();
             return response.body().string();
         } catch (IOException e) {
             e.printStackTrace();
