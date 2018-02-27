@@ -33,9 +33,10 @@ public class HomeAsyncTaskLoader extends AsyncTaskLoader {
         Response response = null;
         try {
             response = client.newCall(request).execute();
+            return response.body().string();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return response;
+        return null;
     }
 }

@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:id="@+id/root_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true">
 
@@ -20,20 +21,7 @@
             android:layout_marginBottom="24dp"
             android:src="@drawable/votinglogin_" />
 
-        <!--  Name Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
 
-            <EditText
-                android:id="@+id/input_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name"
-                android:inputType="textCapWords" />
-        </android.support.design.widget.TextInputLayout>
 
         <!-- Email Label -->
         <android.support.design.widget.TextInputLayout
@@ -64,16 +52,8 @@
                 android:hint="Password"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
-        <!-- Password Label -->
-        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-            android:id="@+id/material_spinner1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="Select Your Deparment"
-            app:met_floatingLabel="normal"
-            android:textColorHint="#CFD8DC"
-            android:gravity="center"
-            />
+
+
 
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton

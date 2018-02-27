@@ -14,6 +14,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.ErrorTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Caption</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
     <!-- Fullscreen application theme. -->
     <style name="FullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
