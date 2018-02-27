@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout_container2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hp.votingsystemv1.Activities.ConfirmProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/header_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/profile_image_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/iv_display_image"
+                            android:layout_width="140dp"
+                            android:layout_height="140dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="8dp"
+                            android:paddingTop="30dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/camera"
+                            app:civ_border_color="@color/colorPrimary"
+                            app:civ_border_width="2dp"
+                            tools:src="@drawable/no_image" />
+
+                        <android.support.design.widget.FloatingActionButton
+                            android:id="@+id/b_change_picture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|end"
+                            android:layout_margin="3dp"
+                            android:src="@drawable/camera"
+                            app:borderWidth="2dp"
+                            app:fabSize="mini" />
+                    </FrameLayout>
+
+                    <EditText
+                        android:id="@+id/et_display_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:hint="display_name"
+                        android:inputType="textNoSuggestions"
+                        android:minWidth="150dp"
+                        android:text="Yousra Mahdi"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                        android:textColor="@color/colorPrimary" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_almost_there"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:text="almost_profile"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="19sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/form"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp">
+
+                    <EditText
+                        android:id="@+id/eti_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:text="yousra@gmail.com" />
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/et_f_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/eti_f_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="First Name"
+                            android:inputType="textNoSuggestions"
+                            android:text="Yousra" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/et_l_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/eti_l_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Last Name"
+                            android:inputType="textNoSuggestions"
+                            android:text="Mahdi" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/et_phone_number"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="1">
+
+                        <EditText
+                            android:id="@+id/eti_phone_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Phone Number"
+                            android:inputType="phone"
+                            android:text="7506140437" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/et_dob"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:errorEnabled="true">
+
+
+                        <EditText
+                            android:id="@+id/eti_dob"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:hint="Date of Birth"
+                            android:inputType="none" />
+                    </android.support.design.widget.TextInputLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/spinner_cities_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/spinner_cities"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Select Your City"
+                        app:met_floatingLabel="normal"
+                        android:textColorHint="#CFD8DC"
+                        android:gravity="center" />
+                    <View
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content"/>
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/spinner_gender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Gender"
+                        app:met_floatingLabel="normal"
+                        android:textColorHint="#CFD8DC"
+                        android:gravity="center" />
+
+                </LinearLayout>
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/material_spinner1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Select Your Deparment"
+                    app:met_floatingLabel="normal"
+                    android:textColorHint="#CFD8DC"
+                    android:gravity="center"
+                    />
+
+                <Button
+                    android:id="@+id/b_submit"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:text="submit"
+                    android:textColor="@color/colorPrimary" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

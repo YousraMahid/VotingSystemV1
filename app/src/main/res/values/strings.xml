@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VotingSystemV1</string>
+    <string name="app_name">Voting System</string>
     <string name="app_intro_skip">Skip</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -81,5 +81,6 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+
 
 </resources>
