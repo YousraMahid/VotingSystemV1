@@ -26,8 +26,6 @@ public class HomeAsyncTaskLoader extends AsyncTaskLoader {
         Request request = new Request.Builder()
                 .url("http://awrosoft.krd/voting/voting/API/getSubjects.php")
                 .get()
-                .addHeader("Cache-Control", "no-cache")
-                .addHeader("Postman-Token", "e805bdea-f5d8-92d3-7e42-4bfc456fa515")
                 .build();
 
         Response response = null;

@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginBottom="10dp">
 
@@ -17,66 +17,58 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/cover_photo"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/unnamed" />
-            <RelativeLayout
-                android:id="@+id/relative"
+        <LinearLayout
+            android:id="@+id/profile_image_name_pro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical">
+
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintRight_toRightOf="@id/cover_photo"
-                app:layout_constraintLeft_toLeftOf="@id/cover_photo"
-                app:layout_constraintBottom_toBottomOf="@id/cover_photo"
-                app:layout_constraintTop_toTopOf="@id/cover_photo">
+                android:layout_gravity="center">
 
-            <com.github.siyamed.shapeimageview.CircularImageView
-                android:id="@+id/profile_photo"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_centerHorizontal="true"
-                android:padding="10dp"
-                android:scaleType="centerInside"
-                android:src="@drawable/coverphoto"
-                app:siRadius="200dp" />
-
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_display_image"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="8dp"
+                    android:paddingTop="30dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/camera"
+                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_width="2dp"
+                    tools:src="@drawable/no_image" />
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/fab_edit_profile"
+                    android:id="@+id/b_change_picture"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/profile_photo"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="9dp"
-                    android:src="@drawable/camera" />
-            </RelativeLayout>
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="3dp"
+                    android:src="@drawable/camera"
+                    app:borderWidth="2dp"
+                    app:fabSize="mini" />
+            </FrameLayout>
+
             <EditText
-                android:layout_width="200dp"
+                android:id="@+id/et_display_name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="@id/relative"
-                app:layout_constraintRight_toRightOf="@id/relative"
-                app:layout_constraintTop_toBottomOf="@id/relative"
-                android:textAlignment="center"
-                android:text="username" />
+                android:layout_gravity="center"
+                android:hint="display_name"
+                android:inputType="textNoSuggestions"
+                android:minWidth="150dp"
+                android:text="Yousra Mahdi"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textColor="@color/colorPrimary" />
 
-                android:layout_alignBottom="@id/profile_photo"
-               />
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Edit"-->
-                <!--android:textSize="18sp"-->
-                <!--android:paddingRight="8dp"-->
-                <!--android:paddingLeft="8dp"-->
-                <!--android:textColor="#000000"-->
-                <!--android:layout_toRightOf="@id/profile_photo"-->
-                <!--android:layout_alignBottom="@id/profile_photo"-->
-                <!--android:layout_marginLeft="-87dp"-->
-                <!--android:background="@drawable/edit_text_view"/>-->
+        </LinearLayout>
         </android.support.constraint.ConstraintLayout>
+
 
 
         <LinearLayout
