@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
         ConnectivityManager connectivityManager=(ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info=connectivityManager.getActiveNetworkInfo();
         if (info==null || !info.isConnected()){
-            Toast.makeText(getContext(), "there is no internet Connection", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "there is no internet Connection ", Toast.LENGTH_SHORT).show();
         }else
             getLoaderManager().initLoader(1,null,this).forceLoad();
 
@@ -120,10 +121,13 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
-        if (data != null && data.isEmpty()){
+        if (data != null && !data.isEmpty()){
             updateUI(data);
+            Log.v("DATA",data);
         }else
-            Toast.makeText(getContext(), "there is no internet connection", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "there is no response", Toast.LENGTH_SHORT).show();
+
+        Log.v("DATA",data);
     }
 
     @Override

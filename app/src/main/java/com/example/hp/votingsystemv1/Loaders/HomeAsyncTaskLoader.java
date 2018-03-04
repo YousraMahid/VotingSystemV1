@@ -13,13 +13,13 @@ import okhttp3.Response;
  * Created by hp on 2/18/2018.
  */
 
-public class HomeAsyncTaskLoader extends AsyncTaskLoader {
+public class HomeAsyncTaskLoader extends AsyncTaskLoader<String> {
     public HomeAsyncTaskLoader(Context context) {
         super(context);
     }
 
     @Override
-    public Object loadInBackground() {
+    public String loadInBackground() {
 
         OkHttpClient client = new OkHttpClient();
 

@@ -15,7 +15,7 @@
             android:gravity="center"
             android:paddingLeft="32dp"
             android:paddingRight="29dp"
-            android:text="Welcome to AppIntro"
+            android:text="Welcome to Voting System"
             android:textColor="#ffffff"
             android:textSize="27sp"
             android:textStyle="bold" />
@@ -27,15 +27,13 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            //image link from drawable folder
-
             <ImageView
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:src="@drawable/elections" />
+                android:src="@drawable/vote" />
         </LinearLayout>
 
         <TextView
@@ -44,11 +42,13 @@
             android:layout_gravity="center"
             android:layout_weight="3"
             android:gravity="center"
+            android:layout_margin="10dp"
             android:paddingLeft="64dp"
             android:paddingRight="64dp"
-            android:text="Amazing android app with cool features."
+            android:text="You can vote for any new policies in your company or organization easily"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:textStyle="bold"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="fill_parent"
