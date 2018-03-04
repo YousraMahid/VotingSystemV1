@@ -27,15 +27,13 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        //image link from drawable folder
-
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:src="@drawable/signin" />
+            android:src="@drawable/registration" />
     </LinearLayout>
 
     <TextView
@@ -44,11 +42,13 @@
         android:layout_gravity="center"
         android:layout_weight="3"
         android:gravity="center"
+        android:layout_margin="10dp"
         android:paddingLeft="64dp"
         android:paddingRight="64dp"
-        android:text="Amazing android app with cool features."
+        android:text="By registering yourself you can gain access to the system"
         android:textColor="#ffffff"
-        android:textSize="16sp" />
+        android:textStyle="bold"
+        android:textSize="18sp" />
 
     <TextView
         android:layout_width="fill_parent"

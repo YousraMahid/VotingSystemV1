@@ -19,7 +19,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_marginBottom="20dp"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimaryText"
             android:text="Q//which language do you know???"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,24 +33,24 @@
                     android:layout_height="wrap_content"
                      android:text="English"
                     android:padding="10dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimaryText"
+                    android:backgroundTint="@color/colorPrimaryText"
                     android:textSize="18sp"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kurdish"
                     android:padding="10dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimaryText"
+                    android:backgroundTint="@color/colorPrimaryText"
                     android:textSize="18sp"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Arabic"
                     android:padding="10dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:backgroundTint="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimaryText"
+                    android:backgroundTint="@color/colorPrimaryText"
                     android:textSize="18sp"/>
             </RadioGroup>
 
@@ -60,8 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="Submit"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/colorIcons"
+            android:background="@color/colorGrey"
+            android:textColor="@color/colorPrimaryText"
             android:layout_gravity="right"/>
     </LinearLayout>
 
