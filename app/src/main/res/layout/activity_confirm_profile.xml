@@ -47,10 +47,11 @@
                             android:layout_marginBottom="8dp"
                             android:paddingTop="30dp"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/camera"
                             app:civ_border_color="@color/colorPrimary"
                             app:civ_border_width="2dp"
-                            tools:src="@drawable/no_image" />
+                            android:src="@drawable/man"/>
+
+
 
                         <android.support.design.widget.FloatingActionButton
                             android:id="@+id/b_change_picture"
