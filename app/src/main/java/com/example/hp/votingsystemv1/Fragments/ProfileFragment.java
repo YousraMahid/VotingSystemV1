@@ -1,9 +1,7 @@
 package com.example.hp.votingsystemv1.Fragments;
 
 
-import android.app.LoaderManager;
 import android.content.Context;
-import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -28,12 +26,12 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProFragment extends Fragment implements android.support.v4.app.LoaderManager.LoaderCallbacks<String> {
+public class ProfileFragment extends Fragment implements android.support.v4.app.LoaderManager.LoaderCallbacks<String> {
 
     Spinner gender;
     TextView date;
     Spinner department;
-    public ProFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -42,7 +40,7 @@ public class ProFragment extends Fragment implements android.support.v4.app.Load
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View  view=inflater.inflate(R.layout.fragment_, container, false);
+        View  view=inflater.inflate(R.layout.fragment_profile, container, false);
         gender=view.findViewById(R.id.gender_spinner);
         date=view.findViewById(R.id.date_text_view);
         department=view.findViewById(R.id.department_spinner);

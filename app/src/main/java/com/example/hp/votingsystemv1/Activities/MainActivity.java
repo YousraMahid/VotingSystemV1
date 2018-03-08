@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import com.example.hp.votingsystemv1.Fragments.HelpFragment;
 import com.example.hp.votingsystemv1.Fragments.HomeFragment;
 import com.example.hp.votingsystemv1.Fragments.NoteFragment;
-import com.example.hp.votingsystemv1.Fragments.ProFragment;
+import com.example.hp.votingsystemv1.Fragments.ProfileFragment;
 import com.example.hp.votingsystemv1.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.profile:
                     setTitle("Profile");
-                    ProFragment fragmentCashOut = new ProFragment();
+                    ProfileFragment fragmentCashOut = new ProfileFragment();
                     FragmentTransaction fragmentTransactionCashout = getSupportFragmentManager().beginTransaction();
                     fragmentTransactionCashout.replace(R.id.frame_layout, fragmentCashOut);
                     fragmentTransactionCashout.commit();
