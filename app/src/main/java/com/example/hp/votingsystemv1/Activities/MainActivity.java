@@ -10,7 +10,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.hp.votingsystemv1.Fragments.HelpFragment;
@@ -18,7 +17,6 @@ import com.example.hp.votingsystemv1.Fragments.HomeFragment;
 import com.example.hp.votingsystemv1.Fragments.NoteFragment;
 import com.example.hp.votingsystemv1.Fragments.ProFragment;
 import com.example.hp.votingsystemv1.R;
-import com.example.hp.votingsystemv1.Setting;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
@@ -111,8 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_setting) {
-            Intent intent = new Intent(MainActivity.this, Setting.class);
-            startActivity(intent);
+            
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
