@@ -109,7 +109,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_setting) {
-            
+
+        }else if (id == R.id.nav_about) {
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_logout) {
+            startActivity(new Intent(this, SigninActivity.class));
+            finish();
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
