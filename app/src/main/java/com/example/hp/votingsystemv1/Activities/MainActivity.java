@@ -1,5 +1,6 @@
 package com.example.hp.votingsystemv1.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -17,10 +18,12 @@ import com.example.hp.votingsystemv1.Fragments.HomeFragment;
 import com.example.hp.votingsystemv1.Fragments.NoteFragment;
 import com.example.hp.votingsystemv1.Fragments.ProFragment;
 import com.example.hp.votingsystemv1.R;
+import com.example.hp.votingsystemv1.Setting;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -79,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
         BottomNavigationView navigation =findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -98,5 +104,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_setting) {
+            Intent intent = new Intent(MainActivity.this, Setting.class);
+            startActivity(intent);
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

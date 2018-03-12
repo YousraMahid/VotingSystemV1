@@ -29,6 +29,10 @@
         <activity android:name=".Activities.SignupActivit" />
         <activity android:name=".Activities.PollQuestion" />
         <activity android:name=".Activities.ConfirmProfileActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".Setting"></activity>
     </application>
 
 </manifest>

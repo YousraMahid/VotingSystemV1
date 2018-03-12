@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ScrollView
     android:id="@+id/main_layout_container2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.hp.votingsystemv1.Activities.ConfirmProfileActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
@@ -59,7 +61,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|end"
                             android:layout_margin="3dp"
-                            app:srcCompat="@drawable/camera"
+                            app:srcCompat="@drawable/whitecamera"
                             app:borderWidth="2dp"
                             app:fabSize="mini" />
                     </FrameLayout>
@@ -262,5 +264,48 @@
 
             </LinearLayout>
         </LinearLayout>
+
+
     </LinearLayout>
 </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/intents_chooser_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:layout_dodgeInsetEdges="top">
+
+        <TextView
+            android:id="@+id/intent_camera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="8dp"
+            android:drawableTop="@drawable/ic_intent_camera"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
+            android:text="Camera"/>
+
+        <TextView
+            android:id="@+id/intent_gallery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="8dp"
+            android:drawableTop="@drawable/ic_intent_gallery"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
+            android:text="Gallery"/>
+
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
