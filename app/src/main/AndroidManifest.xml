@@ -32,7 +32,8 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".Activities.AboutActivity"></activity>
+        <activity android:name=".Activities.AboutActivity" />
+        <activity android:name=".Activities.FeedbackActivity"></activity>
     </application>
 
 </manifest>

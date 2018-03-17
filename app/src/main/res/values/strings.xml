@@ -10,8 +10,37 @@
     <string name="hello_blank_fragment">Pro</string>
     <string name="title_activity_settings">Settings</string>
     <string name="copyright">© 2017–%s Voting.\nAll rights reserved.</string>
+    <string name="feedback_neutral">It was OK</string>
+    <string name="feedback_bad">It was Boring</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="sad_hint">We are really sorry.\nTell us what went wrong?</string>
+    <string name="happy_hint">That\'s great!\nTell us what we got right?</string>
+    <string name="neutral_hint">Umm…\nTell us how can we make it better?</string>
 
 
+    <!--string setting-->
+    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_title_language">Language</string>
+    <string-array name="pref_language_titles">
+        <item>English</item>
+        <item>Arabic</item>
 
+    </string-array>
+    <string-array name="pref_language_values">
+        <item>en</item>
+        <item>ar</item>
 
+    </string-array>
+
+    <string name="pref_title_theme">Theme</string>
+    <string-array name="pref_theme_titles">
+        <item>Light</item>
+        <item>Dark</item>
+
+    </string-array>
+    <string-array name="pref_theme_values">
+        <item>1</item>
+        <item>2</item>
+
+    </string-array>
 </resources>
