@@ -19,6 +19,8 @@ import com.example.hp.votingsystemv1.Fragments.ProFragment;
 import com.example.hp.votingsystemv1.R;
 
 public class MainActivity extends AppCompatActivity {
+    DrawerLayout drawer;
+    ActionBarDrawerToggle toggle;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -69,6 +71,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+         drawer = findViewById(R.id.drawer_layout);
+         toggle = new ActionBarDrawerToggle(
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         BottomNavigationView navigation =findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -78,5 +89,15 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransactionTasks = getSupportFragmentManager().beginTransaction();
         fragmentTransactionTasks.replace(R.id.frame_layout, fragmentTasks);
         fragmentTransactionTasks.commit();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (toggle.onOptionsItemSelected(item)){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
