@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
         ConnectivityManager connectivityManager=(ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info=connectivityManager.getActiveNetworkInfo();
         if (info==null || !info.isConnected()){
-            Toast.makeText(getContext(), "there is no internet Connection ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "there is no internet Connection4", Toast.LENGTH_SHORT).show();
         }else
             getLoaderManager().initLoader(1,null,this).forceLoad();
 
@@ -125,9 +125,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
             updateUI(data);
             Log.v("DATA",data);
         }else
-            Toast.makeText(getContext(), "there is no response", Toast.LENGTH_SHORT).show();
-
-        Log.v("DATA",data);
+            Toast.makeText(getContext(), "there is no internet connection6", Toast.LENGTH_SHORT).show();
     }
 
     @Override
