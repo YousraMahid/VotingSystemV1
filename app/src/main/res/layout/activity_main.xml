@@ -34,8 +34,8 @@
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
             app:menu="@menu/bottombar_menu"
-            app:itemTextColor="@color/colorIcons"
-            app:itemIconTint="@color/colorIcons">
+            app:itemTextColor="@color/colorWhite"
+            app:itemIconTint="@color/colorWhite">
 
         </android.support.design.widget.BottomNavigationView>
     </RelativeLayout>

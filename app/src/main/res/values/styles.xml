@@ -46,10 +46,11 @@
 
 
     <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
-        <item name="colorAccent">@color/colorIcons</item>
+        <item name="colorAccent">@color/colorWhite</item>
         <item name="android:textColorPrimary">@color/colorAccent</item>
         <item name="android:background">@color/colorGrey</item>
     </style>
+
 
 
 

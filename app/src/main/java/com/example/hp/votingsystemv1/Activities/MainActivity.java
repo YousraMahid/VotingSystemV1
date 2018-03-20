@@ -1,5 +1,6 @@
 package com.example.hp.votingsystemv1.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,7 +10,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.hp.votingsystemv1.Fragments.HelpFragment;
@@ -18,9 +18,10 @@ import com.example.hp.votingsystemv1.Fragments.NoteFragment;
 import com.example.hp.votingsystemv1.Fragments.ProfileFragment;
 import com.example.hp.votingsystemv1.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
+    NavigationView navigationView;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -80,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
         BottomNavigationView navigation =findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -99,5 +103,32 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_setting) {
+
+        }else if (id == R.id.nav_about) {
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_logout) {
+            startActivity(new Intent(this, SigninActivity.class));
+            finish();
+        }
+        else if (id == R.id.nav_feedback) {
+            startActivity(new Intent(this, FeedbackActivity.class));
+            finish();
+        } else if (id == R.id.nav_profile) {
+            startActivity(new Intent(this, ProFragment.class));
+            finish();
+        }else if (id == R.id.nav_notification) {
+            startActivity(new Intent(this, NoteFragment.class));
+            finish();
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

@@ -22,7 +22,7 @@
             android:background="@color/colorPrimary"
             android:padding="8dp"
             android:text="Subject Name "
-            android:textColor="@color/colorIcons" />
+            android:textColor="@color/colorWhite" />
 
         <View
             android:layout_width="match_parent"
