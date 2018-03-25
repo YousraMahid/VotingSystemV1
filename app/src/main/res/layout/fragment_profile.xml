@@ -42,9 +42,6 @@
                     app:civ_border_width="2dp"
                     android:src="@drawable/man"/>
 
-                <!--<de.hdodenhof.circleimageview.CircleImageView-->
-                    <!--android:id="@+id/iv_display_image"-->
-
                     <!--tools:src="@drawable/no_image" />-->
 
                 <android.support.design.widget.FloatingActionButton

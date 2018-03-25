@@ -55,4 +55,16 @@
 
 
 
+
+    <style name="LightCustom" parent="Theme.AppCompat.Light.NoActionBar">
+
+
+
+    </style>
+
+    <style name="DarkCustom" parent="Theme.AppCompat.NoActionBar">
+
+    </style>
+
+
 </resources>
