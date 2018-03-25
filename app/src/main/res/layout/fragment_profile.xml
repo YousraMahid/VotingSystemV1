@@ -53,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
                     android:layout_margin="3dp"
-                    app:srcCompat="@drawable/whitecamera"
+                    app:srcCompat="@drawable/camera"
                     app:borderWidth="2dp"
                     app:fabSize="mini" />
             </FrameLayout>

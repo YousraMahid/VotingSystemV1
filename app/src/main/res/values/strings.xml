@@ -16,6 +16,8 @@
     <string name="sad_hint">We are really sorry.\nTell us what went wrong?</string>
     <string name="happy_hint">That\'s great!\nTell us what we got right?</string>
     <string name="neutral_hint">Umm…\nTell us how can we make it better?</string>
+    <string name="general_settings">Settings</string>
+
 
 
     <!--string setting-->

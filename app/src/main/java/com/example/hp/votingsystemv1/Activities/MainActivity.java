@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(this, FeedbackActivity.class));
             finish();
         } else if (id == R.id.nav_profile) {
-            startActivity(new Intent(this, ProFragment.class));
+            startActivity(new Intent(this, ProfileFragment.class));
             finish();
         }else if (id == R.id.nav_notification) {
             startActivity(new Intent(this, NoteFragment.class));
