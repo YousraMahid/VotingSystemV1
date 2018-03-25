@@ -12,11 +12,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.example.hp.votingsystemv1.Fragments.HelpFragment;
 import com.example.hp.votingsystemv1.Fragments.HomeFragment;
 import com.example.hp.votingsystemv1.Fragments.NoteFragment;
 import com.example.hp.votingsystemv1.Fragments.ProFragment;
 import com.example.hp.votingsystemv1.R;
+import com.example.hp.votingsystemv1.SettingActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
@@ -51,14 +51,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     FragmentTransaction fragmentTransactionCashout = getSupportFragmentManager().beginTransaction();
                     fragmentTransactionCashout.replace(R.id.frame_layout, fragmentCashOut);
                     fragmentTransactionCashout.commit();
-
-                    return true;
-                case R.id.help:
-                    setTitle("Help");
-                    HelpFragment fragmentDiscuss = new HelpFragment();
-                    FragmentTransaction fragmentTransactionDiscuss = getSupportFragmentManager().beginTransaction();
-                    fragmentTransactionDiscuss.replace(R.id.frame_layout, fragmentDiscuss);
-                    fragmentTransactionDiscuss.commit();
 
                     return true;
             }
@@ -109,7 +101,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_setting) {
-
+            Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+            startActivity(intent);
         }else if (id == R.id.nav_about) {
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intent);
@@ -121,11 +114,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(this, FeedbackActivity.class));
             finish();
         } else if (id == R.id.nav_profile) {
-            startActivity(new Intent(this, ProFragment.class));
-            finish();
+            ProFragment proFragment = new ProFragment();
+            FragmentTransaction fragmentTransactionTasks = getSupportFragmentManager().beginTransaction();
+            fragmentTransactionTasks.replace(R.id.frame_layout, proFragment);
+            fragmentTransactionTasks.commit();
         }else if (id == R.id.nav_notification) {
-            startActivity(new Intent(this, NoteFragment.class));
-            finish();
+            NoteFragment noteFragment = new NoteFragment();
+            FragmentTransaction fragmentTransactionTasks = getSupportFragmentManager().beginTransaction();
+            fragmentTransactionTasks.replace(R.id.frame_layout, noteFragment);
+            fragmentTransactionTasks.commit();
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

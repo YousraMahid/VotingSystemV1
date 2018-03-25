@@ -19,28 +19,26 @@
 
 
     <!--string setting-->
-    <string name="pref_header_notifications">Notifications</string>
-    <string name="pref_title_language">Language</string>
+
     <string-array name="pref_language_titles">
         <item>English</item>
         <item>Arabic</item>
-
     </string-array>
+
     <string-array name="pref_language_values">
         <item>en</item>
         <item>ar</item>
-
     </string-array>
 
-    <string name="pref_title_theme">Theme</string>
+
     <string-array name="pref_theme_titles">
         <item>Light</item>
         <item>Dark</item>
-
     </string-array>
+
     <string-array name="pref_theme_values">
         <item>1</item>
         <item>2</item>
-
     </string-array>
+
 </resources>
