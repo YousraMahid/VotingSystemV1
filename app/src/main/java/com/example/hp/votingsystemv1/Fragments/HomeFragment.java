@@ -37,6 +37,7 @@ import java.util.List;
 public class HomeFragment extends Fragment implements LoaderManager.LoaderCallbacks<String> {
 
     ListView listView;
+    HomeAdapter homeAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -59,8 +60,13 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                Home home=homeAdapter.getItem(i);
+                String pollId=home.getId();
                 Intent intent = new Intent(getActivity(), PollQuestion.class);
+
+                intent.putExtra("POLL_ID",pollId);
                 startActivity(intent);
+
 
             }
         });
@@ -70,7 +76,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
     }
 
     private void updateUI(String data){
-
+        String pollId;
         String subject;
         String question;
         String startTime;
@@ -102,12 +108,17 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
                     endTime=object.getString("end_time");
                 else
                     endTime="";
+                if (object.has("poll_id"))
+                    pollId=object.getString("poll_id");
 
-                Home home=new Home(subject,question,startTime,endTime);
+                else pollId="";
+
+
+                Home home=new Home(pollId,subject,question,startTime,endTime);
                 homeArrayList.add(home);
             }
 
-            HomeAdapter homeAdapter=new HomeAdapter(getContext(),R.layout.home_item,homeArrayList);
+             homeAdapter=new HomeAdapter(getContext(),R.layout.home_item,homeArrayList);
             listView.setAdapter(homeAdapter);
         } catch (JSONException e) {
             e.printStackTrace();

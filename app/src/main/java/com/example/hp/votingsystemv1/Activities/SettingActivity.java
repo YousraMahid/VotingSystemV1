@@ -1,4 +1,4 @@
-package com.example.hp.votingsystemv1;
+package com.example.hp.votingsystemv1.Activities;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceFragment;
@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.hp.votingsystemv1.Models.Theme;
+import com.example.hp.votingsystemv1.R;
 
 public class SettingActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 

@@ -16,7 +16,6 @@ import com.example.hp.votingsystemv1.Fragments.HomeFragment;
 import com.example.hp.votingsystemv1.Fragments.NoteFragment;
 import com.example.hp.votingsystemv1.Fragments.ProfileFragment;
 import com.example.hp.votingsystemv1.R;
-import com.example.hp.votingsystemv1.SettingActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
