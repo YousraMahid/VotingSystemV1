@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data/>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_appbar"/>
+
+    <ScrollView
+        tools:context="com.example.hp.votingsystemv1.Activities.FeedbackActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_marginBottom="30dp"
+               android:text="How do you evaluate Android Voting System?"
+               android:textStyle="bold"
+               android:textSize="24sp"/>
+
+            <Button
+                android:id="@+id/happy_feedback"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="5dp"
+                android:drawableLeft="@drawable/ic_right"
+                android:drawableStart="@drawable/ic_right"
+                android:background="@color/colorGrey"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_margin="10dp"
+                android:drawableEnd="@drawable/happy"
+                android:drawableRight="@drawable/happy"
+                android:text="It was Very good"/>
+
+
+            <EditText
+                android:id="@+id/happy_feedback_comment"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:gravity="top|start"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/edit_background"
+                android:visibility="gone"
+                android:hint="That's great! Tell us what we got right?"/>
+
+            <Button
+                android:id="@+id/neutral_feedback"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="5dp"
+                android:drawableLeft="@drawable/ic_right"
+                android:drawableStart="@drawable/ic_right"
+                android:background="@color/colorGrey"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_margin="10dp"
+                android:drawableEnd="@drawable/emoticon"
+                android:drawableRight="@drawable/emoticon"
+                android:text="It was OK"/>
+
+
+            <EditText
+                android:id="@+id/neutral_feedback_comment"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:gravity="top|start"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/edit_background"
+                android:visibility="gone"
+                android:hint="Umm... Tell us how can we make it better?"/>
+            <Button
+                android:id="@+id/sad_feedback"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="5dp"
+                android:drawableLeft="@drawable/ic_right"
+                android:drawableStart="@drawable/ic_right"
+                android:background="@color/colorGrey"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_margin="10dp"
+                android:drawableEnd="@drawable/sad"
+                android:drawableRight="@drawable/sad"
+                android:text="It was Boring"/>
+
+
+            <EditText
+                android:id="@+id/sad_feedback_comment"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:gravity="top|start"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/edit_background"
+                android:visibility="gone"
+                android:hint="We are really sorry.Tell us what went wrong?"/>
+
+            <Button
+                android:id="@+id/send_feedback"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/feedback_button_db"
+                android:padding="10dp"
+                android:text="Send Feedback"
+                android:textColor="@color/colorWhite"/>
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
+</layout>

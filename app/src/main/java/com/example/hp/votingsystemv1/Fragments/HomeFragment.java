@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -122,6 +123,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
     public void onLoadFinished(Loader<String> loader, String data) {
         if (data != null && !data.isEmpty()){
             updateUI(data);
+            Log.v("DATA",data);
         }else
             Toast.makeText(getContext(), "there is no internet connection6", Toast.LENGTH_SHORT).show();
     }

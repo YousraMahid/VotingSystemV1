@@ -23,13 +23,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="16dp"
+            android:background="@color/colorPrimary"
             android:orientation="vertical">
 
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
-
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_display_image"
                     android:layout_width="140dp"
@@ -38,10 +38,11 @@
                     android:layout_marginBottom="8dp"
                     android:paddingTop="30dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/camera"
                     app:civ_border_color="@color/colorPrimary"
                     app:civ_border_width="2dp"
-                    tools:src="@drawable/no_image" />
+                    android:src="@drawable/man"/>
+
+                    <!--tools:src="@drawable/no_image" />-->
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/b_change_picture"
@@ -49,12 +50,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
                     android:layout_margin="3dp"
-                    android:src="@drawable/camera"
+                    app:srcCompat="@drawable/camera"
                     app:borderWidth="2dp"
                     app:fabSize="mini" />
             </FrameLayout>
 
-            <EditText
+            <TextView
                 android:id="@+id/et_display_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,9 +63,11 @@
                 android:hint="display_name"
                 android:inputType="textNoSuggestions"
                 android:minWidth="150dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
                 android:text="Yousra Mahdi"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorWhite" />
 
         </LinearLayout>
         </android.support.constraint.ConstraintLayout>

@@ -6,12 +6,4 @@
     app:showAsAction="ifRoom"
     android:title="Edit"
     android:icon="@drawable/ic_edit_black_24dp"/>
-    <item
-        android:id="@+id/Setting"
-        app:showAsAction="never"
-        android:title="Setting" />
-    <item
-        android:id="@+id/Logout"
-        app:showAsAction="never"
-        android:title="Logout" />
 </menu>

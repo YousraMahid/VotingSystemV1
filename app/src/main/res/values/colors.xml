@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#607D8B</color>
-    <color name="colorPrimaryDark">#455A64</color>
-    <color name="colorPrimaryLight">#CFD8DC</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#757575</color>
-    <color name="colorIcons">#FFFFFF</color>
-    <color name="colorDivider">#BDBDBD</color>
-    <color name="colorSlide1">#003459</color>
-    <color name="colorSlide2">#02C39A</color>
-    <color name="colorSlide3">#028090</color>
-    <color name="colorSlide4">#38d9d1</color>
-
-    <!--<color name="colorPrimary">#0698bc</color>-->
-    <!--<color name="colorPrimaryDark">#067d9b</color>-->
-    <!--<color name="colorAccent">#067d9b</color>-->
-    <!--<color name="colorDivider">#EFEFEF</color>-->
-    <!--<color name="colorIcons">#FFFFFF</color>-->
-    <!--<color name="colorIcons">#FFFFFF</color>-->
-
-
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGrey">#BDBDBD</color>
+    <color name="colorSlide1">#4285F4</color>
+    <color name="colorSlide2">#0F9D58</color>
+    <color name="colorSlide3">#00BCD4</color>
+    <color name="colorSlide4">#F09300</color>
+    <color name="colorTransparent">#00000000</color>
 
 </resources>

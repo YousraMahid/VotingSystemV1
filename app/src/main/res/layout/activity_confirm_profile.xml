@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ScrollView
     android:id="@+id/main_layout_container2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.hp.votingsystemv1.Activities.ConfirmProfileActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
@@ -47,10 +49,12 @@
                             android:layout_marginBottom="8dp"
                             android:paddingTop="30dp"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/camera"
+                            app:srcCompat="@drawable/camera"
                             app:civ_border_color="@color/colorPrimary"
                             app:civ_border_width="2dp"
-                            tools:src="@drawable/no_image" />
+                            android:src="@drawable/man"/>
+
+
 
                         <android.support.design.widget.FloatingActionButton
                             android:id="@+id/b_change_picture"
@@ -58,12 +62,12 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|end"
                             android:layout_margin="3dp"
-                            android:src="@drawable/camera"
+                            app:srcCompat="@drawable/camera"
                             app:borderWidth="2dp"
                             app:fabSize="mini" />
                     </FrameLayout>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/et_display_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -71,8 +75,8 @@
                         android:hint="display_name"
                         android:inputType="textNoSuggestions"
                         android:minWidth="150dp"
-                        android:text="Yousra Mahdi"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                        android:text="Yousra Mahdi"
                         android:textColor="@color/colorPrimary" />
 
                 </LinearLayout>
@@ -196,6 +200,8 @@
                             android:layout_height="wrap_content"
                             android:focusable="false"
                             android:hint="Date of Birth"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textColorHint="@color/colorPrimaryText"
                             android:inputType="none" />
                     </android.support.design.widget.TextInputLayout>
 
@@ -215,7 +221,8 @@
                         android:layout_height="wrap_content"
                         android:hint="Select Your City"
                         app:met_floatingLabel="normal"
-                        android:textColorHint="#CFD8DC"
+                         android:textColor="@color/colorPrimaryText"
+                         android:textColorHint="@color/colorPrimaryText"
                         android:gravity="center" />
                     <View
                         android:layout_width="15dp"
@@ -227,24 +234,25 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:hint="Gender"
-                        app:met_floatingLabel="normal"
-                        android:textColorHint="#CFD8DC"
-                        android:gravity="center" />
+                        android:textColor="@color/colorPrimaryText"
+                         app:met_floatingLabel="normal"
+                        android:textColorHint="@color/colorPrimaryText"
+                         android:gravity="center" />
 
                 </LinearLayout>
                 <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                     android:id="@+id/material_spinner1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorPrimaryText"
                     android:hint="Select Your Deparment"
                     app:met_floatingLabel="normal"
-                    android:textColorHint="#CFD8DC"
+                    android:textColorHint="@color/colorPrimaryText"
                     android:gravity="center"
                     />
 
                 <Button
                     android:id="@+id/b_submit"
-                    style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
@@ -253,9 +261,52 @@
                     android:layout_marginTop="8dp"
                     android:layout_gravity="center"
                     android:text="submit"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimaryText" />
 
             </LinearLayout>
         </LinearLayout>
+
+
     </LinearLayout>
 </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/intents_chooser_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:layout_dodgeInsetEdges="top">
+
+        <TextView
+            android:id="@+id/intent_camera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="8dp"
+            android:drawableTop="@drawable/ic_intent_camera"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
+            android:text="Camera"/>
+
+        <TextView
+            android:id="@+id/intent_gallery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="8dp"
+            android:drawableTop="@drawable/ic_intent_gallery"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead.Inverse"
+            android:text="Gallery"/>
+
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

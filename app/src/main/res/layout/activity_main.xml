@@ -6,7 +6,9 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
 
 <android.support.design.widget.CoordinatorLayout
     android:id="@+id/main_container"
@@ -32,20 +34,24 @@
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimary"
             app:menu="@menu/bottombar_menu"
-            app:itemTextColor="@color/colorIcons"
-            app:itemIconTint="@color/colorIcons">
+            app:itemTextColor="@color/colorWhite"
+            app:itemIconTint="@color/colorWhite">
 
         </android.support.design.widget.BottomNavigationView>
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
 <android.support.design.widget.NavigationView
+    app:itemTextColor="@color/colorPrimaryText"
+
+    app:menu="@menu/drawer_menu"
     android:id="@+id/nav_view"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:fitsSystemWindows="true"
-    app:menu="@menu/drawer_menu">
-</android.support.design.widget.NavigationView>
+    app:headerLayout="@layout/nav_header"
+    android:fitsSystemWindows="true"    />
+
+
 </android.support.v4.widget.DrawerLayout>
 
 
