@@ -5,6 +5,7 @@ package com.example.hp.votingsystemv1.Models;
  */
 
 public class Home {
+    private String id;
     private String subject;
 
     private String question;
@@ -18,7 +19,8 @@ public class Home {
 
 
 
-    public Home(String subject, String question, String startTime, String endTime) {
+    public Home(String id,String subject, String question, String startTime, String endTime) {
+        this.id=id;
         this.subject = subject;
         this.startTime = startTime;
         this.question=question;
@@ -38,5 +40,9 @@ public class Home {
 
     public String getStartTime() {
         return startTime;
+    }
+
+    public String getId() {
+        return id;
     }
 }
