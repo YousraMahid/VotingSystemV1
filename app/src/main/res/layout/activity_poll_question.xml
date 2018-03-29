@@ -17,7 +17,7 @@
     android:orientation="vertical"
     android:padding="30dp"
     android:layout_margin="30dp"
-    tools:context="com.example.hp.votingsystemv1.Activities.PollQuestion">
+    tools:context="com.example.hp.votingsystemv1.Activities.PollActivity">
 
 
     <LinearLayout
@@ -26,6 +26,7 @@
         android:padding="10dp"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/tv_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -38,32 +39,10 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <RadioGroup
+                android:id="@+id/rg_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                     android:text="English"
-                    android:padding="10dp"
-                    android:textColor="@color/colorPrimaryText"
-                    android:backgroundTint="@color/colorPrimaryText"
-                    android:textSize="18sp"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Kurdish"
-                    android:padding="10dp"
-                    android:textColor="@color/colorPrimaryText"
-                    android:backgroundTint="@color/colorPrimaryText"
-                    android:textSize="18sp"/>
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Arabic"
-                    android:padding="10dp"
-                    android:textColor="@color/colorPrimaryText"
-                    android:backgroundTint="@color/colorPrimaryText"
-                    android:textSize="18sp"/>
+
             </RadioGroup>
 
         </LinearLayout>

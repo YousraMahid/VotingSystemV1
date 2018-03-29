@@ -17,7 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.hp.votingsystemv1.Activities.PollQuestion;
+import com.example.hp.votingsystemv1.Activities.PollActivity;
 import com.example.hp.votingsystemv1.Adapters.HomeAdapter;
 import com.example.hp.votingsystemv1.Loaders.HomeAsyncTaskLoader;
 import com.example.hp.votingsystemv1.Models.Home;
@@ -28,7 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -38,6 +37,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
 
     ListView listView;
     HomeAdapter homeAdapter;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -62,8 +62,10 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
                 Home home=homeAdapter.getItem(i);
                 String pollId=home.getId();
-                Intent intent = new Intent(getActivity(), PollQuestion.class);
-
+                Log.v("POLL_ID_HOME",pollId);
+                String question=home.getQuestion();
+                Intent intent = new Intent(getActivity(), PollActivity.class);
+                intent.putExtra("QUESTION",question);
                 intent.putExtra("POLL_ID",pollId);
                 startActivity(intent);
 
@@ -78,9 +80,9 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
     private void updateUI(String data){
         String pollId;
         String subject;
-        String question;
         String startTime;
         String endTime;
+        String question;
         ArrayList<Home> homeArrayList=new ArrayList<>();
 
 

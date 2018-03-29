@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.SignupActivit" />
-        <activity android:name=".Activities.PollQuestion" />
+        <activity android:name=".Activities.PollActivity" />
         <activity android:name=".Activities.ConfirmProfileActivity" />
         <activity
             android:name=".SettingsActivity"
