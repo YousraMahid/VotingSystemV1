@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 
 /**
@@ -37,6 +39,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
 
     ListView listView;
     HomeAdapter homeAdapter;
+    SwipeRefreshLayout swipeRefreshLayout;
 
 
     public HomeFragment() {
@@ -49,12 +52,29 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        swipeRefreshLayout=view.findViewById(R.id.srl_home);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                ConnectivityManager connectivityManager=(ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo info=connectivityManager.getActiveNetworkInfo();
+                if (info==null || !info.isConnected()){
+                    Toast.makeText(getContext(), "there is no internet Connection4", Toast.LENGTH_SHORT).show();
+                }else
+                    getLoaderManager().initLoader(1,null,HomeFragment.this).forceLoad();
+            }
+        });
         ConnectivityManager connectivityManager=(ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info=connectivityManager.getActiveNetworkInfo();
         if (info==null || !info.isConnected()){
             Toast.makeText(getContext(), "there is no internet Connection4", Toast.LENGTH_SHORT).show();
         }else
             getLoaderManager().initLoader(1,null,this).forceLoad();
+
+        UUID uuid=UUID.randomUUID();
+        String guid=uuid.toString();
+        Log.v("GUID",guid);
 
         listView = view.findViewById(R.id.list_item);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -136,6 +156,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
     public void onLoadFinished(Loader<String> loader, String data) {
         if (data != null && !data.isEmpty()){
             updateUI(data);
+            swipeRefreshLayout.setRefreshing(false);
             Log.v("DATA",data);
         }else
             Toast.makeText(getContext(), "there is no internet connection6", Toast.LENGTH_SHORT).show();
