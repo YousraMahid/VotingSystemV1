@@ -59,8 +59,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:layout_marginTop="24dp"
-            android:background="@color/colorGrey"
-            android:textColor="@color/colorPrimaryText"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:padding="12dp"
             android:text="Login" />
 
@@ -69,10 +71,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
+            android:layout_marginTop="50dp"
             android:gravity="center"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorPrimaryText"
             android:text="No account yet? Create one"
-            android:textSize="16dip" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 </ScrollView>
