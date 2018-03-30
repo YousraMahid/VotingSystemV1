@@ -60,14 +60,17 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                email=emailET.getText().toString();
 
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
                 email=emailET.getText().toString();
+                Log.v("EMAIL",email);
             }
         });
+
 
         passwordET.addTextChangedListener(new TextWatcher() {
             @Override
@@ -77,14 +80,17 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                pass=passwordET.getText().toString();
 
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
                 pass=passwordET.getText().toString();
+                Log.v("PASSWORD",pass);
             }
         });
+
 
 
         Thread thread = new Thread(new Runnable() {
@@ -120,6 +126,41 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.btn_login:
+                emailET.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        email=emailET.getText().toString();
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        email=emailET.getText().toString();
+                    }
+                });
+
+                passwordET.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                        pass=passwordET.getText().toString();
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+                        pass=passwordET.getText().toString();
+                    }
+                });
                 ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo info=connectivityManager.getActiveNetworkInfo();
                 if (info==null || !info.isConnected()){
