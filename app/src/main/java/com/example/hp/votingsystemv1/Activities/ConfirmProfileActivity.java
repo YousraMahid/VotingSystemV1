@@ -1,5 +1,6 @@
 package com.example.hp.votingsystemv1.Activities;
 
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
@@ -11,8 +12,13 @@ import com.example.hp.votingsystemv1.R;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ConfirmProfileActivity extends AppCompatActivity {
+    private static final String EMAIL_REGEX = "^[a-zA-Z]+[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.{1}[a-zA-Z0-9-.]{2,}(?<!\\.)$";
+    private Calendar mCalendar;
+    private DatePickerDialog.OnDateSetListener mDatePickedListener;
+
     MaterialBetterSpinner department;
     MaterialBetterSpinner gender;
     MaterialBetterSpinner city;
