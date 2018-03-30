@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="genders">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+
+    <string-array name="department">
+        <item>Department</item>
+        <item>HR</item>
+        <item>Project Management</item>
+    </string-array>
+
+
+    <string-array name="city">
+        <item>City</item>
+        <item>Erbil</item>
+        <item>Suli</item>
+    </string-array>
 
 </resources>

@@ -18,6 +18,15 @@
     <string name="neutral_hint">Umm…\nTell us how can we make it better?</string>
     <string name="general_settings">Settings</string>
 
+<!--string registaration-->
+
+    <string name="this_field_is_required">This field is required</string>
+    <string name="invalid_input">Invalid input</string>
+    <string name="age_greater_than18">You\'re smaller than 18</string>
+    <string name="select_valid_city">Please select a valid city</string>
+    <string name="dep_invalide">is required</string>
+    <string name="updating_account">Updating Account</string>
+    <string name="please_wait">Please wait</string>
 
 
     <!--string setting-->
