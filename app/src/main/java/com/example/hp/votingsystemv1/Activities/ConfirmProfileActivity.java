@@ -12,10 +12,12 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -45,6 +47,8 @@ public class ConfirmProfileActivity extends AppCompatActivity {
     private static final String EMAIL_REGEX = "^[a-zA-Z]+[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.{1}[a-zA-Z0-9-.]{2,}(?<!\\.)$";
     private Calendar mCalendar;
     private static final int ACTIVITY_REQUEST_CODE_CAMERA = 1991;
+    private static final int PERMISSION_REQUEST_CODE_STORAGE_READ = 2990;
+
     private static final int ACTIVITY_REQUEST_CODE_GALLERY = 1992;
     private DatePickerDialog.OnDateSetListener mDatePickedListener;
     private Intent cameraIntent, galleryIntent;
@@ -55,6 +59,7 @@ public class ConfirmProfileActivity extends AppCompatActivity {
     //component
     FloatingActionButton bChangePic;
     TextInputLayout email;
+    LinearLayout root;
     TextInputLayout fName;
     TextInputLayout lName;
     TextInputLayout phone;
@@ -68,6 +73,8 @@ public class ConfirmProfileActivity extends AppCompatActivity {
     TextView intentGallery;
     TextView intentCamera;
     LinearLayout intentsChooserContainer;
+
+
 
 
     public void reference() {
@@ -86,6 +93,7 @@ public class ConfirmProfileActivity extends AppCompatActivity {
         intentCamera=findViewById(R.id.intent_camera);
         intentGallery=findViewById(R.id.intent_gallery);
         bChangePic=findViewById(R.id.b_change_picture);
+        root=findViewById(R.id.root);
 
 
     }
@@ -161,7 +169,7 @@ public class ConfirmProfileActivity extends AppCompatActivity {
                         mIntentHandlerChooser.setState(BottomSheetBehavior.STATE_HIDDEN);
                     }
                 } else {
-                   //TODO requestStoragePermission();
+                   requestStoragePermission();
                 }
             }
         });
@@ -240,7 +248,7 @@ public class ConfirmProfileActivity extends AppCompatActivity {
         }
 
 
-        //City Validator
+        //Department Validator
         if (department.getSelectedItemPosition() == 0) {
             ((TextView) department.getSelectedView()).setError(INVALID_CITY);
            departmentError.setText(INVALID_CITY);
@@ -281,6 +289,7 @@ public class ConfirmProfileActivity extends AppCompatActivity {
         Date today = Calendar.getInstance().getTime();
         final double acceptableDiff = 18 * 365.25d * 24 * 3600 * 1000; //18 years * 365 days * 24 hrs * 3600 secs * 1000 ms
         long diff = today.getTime() - mCalendar.getTimeInMillis();
+        Log.v("RESULT", String.valueOf(mCalendar.getTimeInMillis()));
 
         return diff < acceptableDiff;
     }
@@ -315,21 +324,7 @@ public class ConfirmProfileActivity extends AppCompatActivity {
        intentCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Create the file to save the captured image
-                File photoFile = createImageFile();
-
-                // Continue only if the File was successfully created
-                if (photoFile != null) {
-                    //Put Extras
-                    cameraOutputFile = FileProvider.getUriForFile(ConfirmProfileActivity.this,
-                            getPackageName().concat(".fileprovider"),
-                            photoFile);
-                    grantUriPermission(cameraComponent.getPackageName(), cameraOutputFile, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, cameraOutputFile);
-                }
-
-                startActivityForResult(cameraIntent, ACTIVITY_REQUEST_CODE_CAMERA);
-                mIntentHandlerChooser.setState(BottomSheetBehavior.STATE_HIDDEN);
+               //TODO next version
 
             }
         });
@@ -345,26 +340,28 @@ public class ConfirmProfileActivity extends AppCompatActivity {
 
 
 
-    private File createImageFile() {
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
-        String fileName = "Img_" + timeStamp;
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = null;
-        try {
-            image = File.createTempFile(
-                    fileName,  /* prefix */
-                    ".jpg",         /* suffix */
-                    storageDir      /* directory */
-            );
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (image != null) {
-                image.deleteOnExit();
-            }
-        }
+    private void requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            // Provide an additional rationale to the user if the permission was not granted
+            // and the user would benefit from additional context for the use of the permission.
+            // Display a SnackBar with a button to request the missing permission.
+            Snackbar.make( root, R.string.storage_permission,
+                    Snackbar.LENGTH_INDEFINITE).setAction("OK", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Request the permission
+                    ActivityCompat.requestPermissions(ConfirmProfileActivity.this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            PERMISSION_REQUEST_CODE_STORAGE_READ);
+                }
+            }).show();
 
-        return image;
+        } else {
+            // Request the permission. The result will be received in onRequestPermissionResult().
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    PERMISSION_REQUEST_CODE_STORAGE_READ);
+        }
     }
 
 

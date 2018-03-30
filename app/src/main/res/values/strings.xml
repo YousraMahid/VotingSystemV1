@@ -27,6 +27,7 @@
     <string name="dep_invalide">is required</string>
     <string name="updating_account">Updating Account</string>
     <string name="please_wait">Please wait</string>
+    <string name="storage_permission">Storage access is required to load gallery images.</string>
 
 
     <!--string setting-->
