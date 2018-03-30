@@ -65,7 +65,7 @@
                 android:minWidth="150dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"
-                android:text="Yousra Mahdi"
+                tools:text="Yousra Mahdi"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
                 android:textColor="@color/colorWhite" />
 
@@ -94,7 +94,7 @@
                 android:background="@drawable/edit_text_shape"
                 android:ellipsize="start"
                 android:padding="8dp"
-                android:text="shahidatalip4@gmail.com"
+                tools:text="shahidatalip4@gmail.com"
                 android:textSize="16dp" />
 
             <TextView
@@ -112,7 +112,7 @@
                 android:ellipsize="start"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:text="1223dknk"
+                tools:text="1223dknk"
                 android:textSize="16dp" />
 
             <TextView
@@ -152,7 +152,7 @@
                         android:layout_marginTop="5dp"
                         android:background="@drawable/edit_text_shape"
                         android:padding="8dp"
-                        android:text="12/12/2017" />
+                        tools:text="12/12/2017" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -204,7 +204,7 @@
                     android:background="@drawable/edit_text_shape"
                     android:inputType="numberDecimal"
                     android:padding="8dp"
-                    android:text="750 155 2581"
+                    tools:text="750 155 2581"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -222,7 +222,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edit_text_shape"
                 android:padding="8dp"
-                android:text="Hawler"
+                tools:text="Hawler"
                 android:textSize="18sp" />
 
 

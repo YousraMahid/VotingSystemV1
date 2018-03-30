@@ -44,6 +44,8 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
     String fName;
     String stringDepartment;
     String lName;
+    ArrayList<String> genderList;
+    String stringGender;
     ArrayList<String> departments;
     public ProfileFragment() {
         // Required empty public constructor
@@ -65,17 +67,13 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
         fNameLName=view.findViewById(R.id.et_display_name);
 
 
-        ArrayList<String> genderList=new ArrayList<>();
+        genderList=new ArrayList<>();
         genderList.add("Female");
         genderList.add("Male");
 
 
         //Department Spinner
          departments=new ArrayList<>();
-        departments.add("HR");
-        departments.add("PMO");
-        departments.add("IP");
-
         ArrayAdapter<String> departmentAdapter=new ArrayAdapter<String>(getContext(),R.layout.support_simple_spinner_dropdown_item,departments);
         department.setAdapter(departmentAdapter);
 
@@ -107,6 +105,12 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
                 }else
                     stringDepartment="";
                 departments.add(stringDepartment);
+
+                if (object.has("gender")){
+                    stringGender=object.getString("gender");
+                }else
+                    stringGender="";
+                genderList.add(stringDepartment);
 
                 if (object.has("last_name")){
                     lName=object.getString("last_name");
@@ -140,7 +144,11 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
 
                 fNameLName.setText(fName +" "+lName);
 
-
+                Log.i("xxx", stringGender);
+                if(stringGender.equals("male"))
+                    gender.setSelection(0);
+                else gender.setSelection(1);
+                //awha runi ka
             }
         } catch (JSONException e) {
             e.printStackTrace();
