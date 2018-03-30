@@ -322,6 +322,7 @@ public class ConfirmProfileActivity extends AppCompatActivity {
         }
 
 
+
        intentCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
