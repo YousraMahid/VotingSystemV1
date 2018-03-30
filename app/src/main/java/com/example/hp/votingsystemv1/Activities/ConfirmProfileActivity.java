@@ -29,8 +29,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.hp.votingsystemv1.R;
+import com.squareup.picasso.Picasso;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.io.File;
@@ -48,14 +50,13 @@ public class ConfirmProfileActivity extends AppCompatActivity {
     private Calendar mCalendar;
     private static final int ACTIVITY_REQUEST_CODE_CAMERA = 1991;
     private static final int PERMISSION_REQUEST_CODE_STORAGE_READ = 2990;
-
     private static final int ACTIVITY_REQUEST_CODE_GALLERY = 1992;
     private DatePickerDialog.OnDateSetListener mDatePickedListener;
     private Intent cameraIntent, galleryIntent;
     private ProgressDialog mCreatingAccountProgressDialog;
     private boolean isAnimating = false; // a work around for image animation
     private BottomSheetBehavior mIntentHandlerChooser;
-    private Uri cameraOutputFile;
+    private Uri uri;
     //component
     FloatingActionButton bChangePic;
     TextInputLayout email;
@@ -365,4 +366,29 @@ public class ConfirmProfileActivity extends AppCompatActivity {
     }
 
 
-}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent imageReturnedIntent) {
+        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case ACTIVITY_REQUEST_CODE_CAMERA:
+                    break;
+
+                case ACTIVITY_REQUEST_CODE_GALLERY:
+                            Toast.makeText(this, "image selected", Toast.LENGTH_SHORT).show();
+                            uri = imageReturnedIntent.getData();
+                            Picasso.get().load(String.valueOf(uri)).into(userImage);
+
+                        }
+
+                    }
+                }
+
+            }
+
+
+
+
+
+
