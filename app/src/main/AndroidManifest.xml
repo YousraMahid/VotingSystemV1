@@ -34,11 +34,10 @@
         <activity android:name=".Activities.PollActivity" />
         <activity android:name=".Activities.ConfirmProfileActivity" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".Activities.SettingActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".Activities.AboutActivity" />
         <activity android:name=".Activities.FeedbackActivity" />
-        <activity android:name=".Activities.SettingActivity"></activity>
     </application>
 
 </manifest>
