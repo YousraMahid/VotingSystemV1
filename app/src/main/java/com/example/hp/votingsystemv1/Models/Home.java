@@ -7,24 +7,24 @@ package com.example.hp.votingsystemv1.Models;
 public class Home {
     private String id;
     private String subject;
-
     private String question;
     private String startTime;
-
-    public String getEndTime() {
-        return endTime;
-    }
-
     private String endTime;
+    private String currentTime;
 
 
 
-    public Home(String id,String subject, String question, String startTime, String endTime) {
+
+    public Home(String id, String subject, String question, String startTime, String endTime, String currentTime) {
         this.id=id;
         this.subject = subject;
         this.startTime = startTime;
         this.question=question;
         this.endTime = endTime;
+        this.currentTime = currentTime;
+    }
+    public String getEndTime() {
+        return endTime;
     }
 
     public String getQuestion() {
@@ -44,5 +44,9 @@ public class Home {
 
     public String getId() {
         return id;
+    }
+
+    public String getCurrentTime() {
+        return currentTime;
     }
 }

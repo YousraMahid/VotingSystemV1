@@ -45,13 +45,12 @@
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/iv_display_image"
-                            android:layout_width="140dp"
-                            android:layout_height="140dp"
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginBottom="8dp"
                             android:paddingTop="30dp"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/camera"
                             app:civ_border_color="@color/colorPrimary"
                             app:civ_border_width="2dp"
                             android:src="@drawable/man"/>
@@ -94,8 +93,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email"
-                        android:inputType="textEmailAddress"
-                        android:text="yousra@gmail.com" />
+                        android:inputType="textEmailAddress" />
                 </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
@@ -117,8 +115,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="First Name"
-                            android:inputType="textNoSuggestions"
-                            android:text="Yousra" />
+                            android:inputType="textNoSuggestions" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -135,8 +132,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Last Name"
-                            android:inputType="textNoSuggestions"
-                            android:text="Mahdi" />
+                            android:inputType="textNoSuggestions" />
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
 
@@ -159,8 +155,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Phone Number"
-                            android:inputType="phone"
-                            android:text="7506140437" />
+                            android:inputType="phone" />
                     </android.support.design.widget.TextInputLayout>
 
                     <android.support.design.widget.TextInputLayout
@@ -234,6 +229,8 @@
                         android:layout_height="wrap_content"
                         android:entries="@array/department"
                         android:padding="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="10dp"
                         android:textColor="@color/colorPrimaryText"
                         android:textColorHint="@color/colorPrimaryText"
@@ -242,8 +239,9 @@
                     <TextView
                         android:id="@+id/tv_spinner_dep_error"
                         style="@style/AppTheme.ErrorTextAppearance"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"/>
                 </LinearLayout>
 
 

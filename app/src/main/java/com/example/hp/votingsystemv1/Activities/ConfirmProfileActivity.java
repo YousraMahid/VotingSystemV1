@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -57,6 +58,7 @@ public class ConfirmProfileActivity extends AppCompatActivity {
     private boolean isAnimating = false; // a work around for image animation
     private BottomSheetBehavior mIntentHandlerChooser;
     private Uri uri;
+    SharedPreferences.Editor editor;
     //component
     FloatingActionButton bChangePic;
     TextInputLayout email;
@@ -110,8 +112,12 @@ public class ConfirmProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 validationAndPush();
+                Intent intent=new Intent(ConfirmProfileActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
+
+        editor=getSharedPreferences("USER",MODE_PRIVATE).edit();
 
         mCalendar = Calendar.getInstance();
         mDatePickedListener = new DatePickerDialog.OnDateSetListener() {
@@ -129,7 +135,7 @@ public class ConfirmProfileActivity extends AppCompatActivity {
 
         dob.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 new DatePickerDialog(ConfirmProfileActivity.this,
                         mDatePickedListener,
                         mCalendar.get(Calendar.YEAR),
@@ -258,24 +264,24 @@ public class ConfirmProfileActivity extends AppCompatActivity {
             departmentError.setText(""); //We need to clear only this field because set to the layout
         }
 
-        //Image Validator
-        if (userImage.getTag() == null) {
-            if (!isAnimating) {
-                isAnimating = true;
-               userImage.animate().yBy(-50).setInterpolator(new DecelerateInterpolator()).setDuration(200).withEndAction(new Runnable() {
-                    @Override
-                    public void run() {
-                   userImage.animate().yBy(50).setInterpolator(new BounceInterpolator()).setDuration(400).withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                isAnimating = false;
-                            }
-                        }).start();
-                    }
-                }).start();
-            }
-            valid = false;
-        }
+//        //Image Validator
+//        if (userImage.getTag() == null) {
+//            if (!isAnimating) {
+//                isAnimating = true;
+//               userImage.animate().yBy(-50).setInterpolator(new DecelerateInterpolator()).setDuration(200).withEndAction(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                   userImage.animate().yBy(50).setInterpolator(new BounceInterpolator()).setDuration(400).withEndAction(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                isAnimating = false;
+//                            }
+//                        }).start();
+//                    }
+//                }).start();
+//            }
+//            valid = false;
+//        }
 
         //Push Data
         if (valid) {
@@ -379,7 +385,11 @@ public class ConfirmProfileActivity extends AppCompatActivity {
                 case ACTIVITY_REQUEST_CODE_GALLERY:
                             Toast.makeText(this, "image selected", Toast.LENGTH_SHORT).show();
                             uri = imageReturnedIntent.getData();
+                            editor.putString("IMAGE",String.valueOf(uri));
+                            editor.apply();
+
                             Picasso.get().load(String.valueOf(uri)).into(userImage);
+
 
                         }
 

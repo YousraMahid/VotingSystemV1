@@ -1,6 +1,8 @@
 package com.example.hp.votingsystemv1.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,16 +13,22 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.hp.votingsystemv1.Fragments.HomeFragment;
 import com.example.hp.votingsystemv1.Fragments.NoteFragment;
 import com.example.hp.votingsystemv1.Fragments.ProfileFragment;
 import com.example.hp.votingsystemv1.R;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
+
+
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -64,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
          drawer = findViewById(R.id.drawer_layout);
          toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -75,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
         BottomNavigationView navigation =findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -84,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction fragmentTransactionTasks = getSupportFragmentManager().beginTransaction();
         fragmentTransactionTasks.replace(R.id.frame_layout, fragmentTasks);
         fragmentTransactionTasks.commit();
+
     }
 
 

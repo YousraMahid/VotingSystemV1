@@ -28,7 +28,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -88,37 +87,39 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
                 Home home=homeAdapter.getItem(i);
                 String pollId=home.getId();
                 Log.v("POLL_ID_HOME",pollId);
-                String startTime=home.getStartTime();
-                String endTime=home.getEndTime();
-                Calendar currentTime= Calendar.getInstance();
-                int year=currentTime.get(Calendar.YEAR);
-                int month=currentTime.get(Calendar.MONTH)+1;
-                int day=currentTime.get(Calendar.DATE);
+//                String startTime=home.getStartTime();
+//                Log.v("STARTTIME",startTime);
+//                String endTime=home.getEndTime();
+                String title=home.getSubject();
+//                String now=home.getCurrentTime();
+//                Log.v("CURRENTTIME",now);
+//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+               // try {
+//                    Date nowTime = sdf.parse(now);
+//                    Log.v("NOW_TIME",nowTime+"");
+//                    Date start=sdf.parse(startTime);
+//                    Date end=sdf.parse(endTime);
+//
+//
+//                    Log.v("START",start+"");
+//                    Log.v("END",end+"");
 
-                String now=year+"-"+month+"-"+day;
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-                try {
-                    Date nowTime = sdf.parse(now);
-                    Date start=sdf.parse(startTime);
-                    Date end=sdf.parse(endTime);
-
-                    Log.v("NOW_TIME",nowTime+"");
-
-                    if (nowTime.after(start)||(nowTime.before(end))){
+                    //if (nowTime.after(start)||(nowTime.before(end))){
                         String question=home.getQuestion();
                         Intent intent = new Intent(getActivity(), PollActivity.class);
                         intent.putExtra("QUESTION",question);
                         intent.putExtra("POLL_ID",pollId);
+                        intent.putExtra("TITLE",title);
                         startActivity(intent);
-                    }else
-                        Toast.makeText(getContext(), "The time for this poll is finished", Toast.LENGTH_SHORT).show();
+                    //}else
+                      //  Toast.makeText(getContext(), "The time for this poll is finished", Toast.LENGTH_SHORT).show();
 
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
 
 
-                Log.v("CURRENT_TIME",now);
+
 
 
 
@@ -135,6 +136,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
         String startTime;
         String endTime;
         String question;
+        String currentTime;
         ArrayList<Home> homeArrayList=new ArrayList<>();
 
 
@@ -162,13 +164,21 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
                     endTime=object.getString("end_time");
                 else
                     endTime="";
+
+                if (object.has("current_time"))
+                    currentTime=object.getString("current_time");
+                else
+                    currentTime="";
+
+                Log.v("CURRENT_TIME",currentTime);
+
                 if (object.has("poll_id"))
                     pollId=object.getString("poll_id");
 
                 else pollId="";
 
 
-                Home home=new Home(pollId,subject,question,startTime,endTime);
+                Home home=new Home(pollId,subject,question,startTime,endTime, currentTime);
                 homeArrayList.add(home);
             }
 

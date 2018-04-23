@@ -2,8 +2,10 @@ package com.example.hp.votingsystemv1.Fragments;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,12 +16,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hp.votingsystemv1.Loaders.ProfileAsyncTaskLoader;
 import com.example.hp.votingsystemv1.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +51,7 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
     ArrayList<String> genderList;
     String stringGender;
     ArrayList<String> departments;
+    ImageView profileImage;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -65,6 +70,11 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
         editPass=view.findViewById(R.id.ed_pass);
         editPhone=view.findViewById(R.id.ed_phone);
         fNameLName=view.findViewById(R.id.et_display_name);
+        profileImage=view.findViewById(R.id.iv_display_image);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("USER", Context.MODE_PRIVATE);
+        Uri imageUri = Uri.parse(sharedPreferences.getString("IMAGE", ""));
+
+        Picasso.get().load(imageUri).into(profileImage);
 
 
         genderList=new ArrayList<>();

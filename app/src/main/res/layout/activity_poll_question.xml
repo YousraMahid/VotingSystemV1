@@ -9,31 +9,32 @@
     <include layout="@layout/toolbar_appbar"/>
 
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="30dp"
-    android:layout_margin="30dp"
-    tools:context="com.example.hp.votingsystemv1.Activities.PollActivity">
+<!--<LinearLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--android:padding="30dp"-->
+    <!--android:layout_margin="30dp"-->
+    <!--tools:context="com.example.hp.votingsystemv1.Activities.PollActivity">-->
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
+        android:padding="5dp"
         android:orientation="vertical">
         <TextView
             android:id="@+id/tv_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:layout_marginBottom="20dp"
             android:textColor="@color/colorPrimaryText"
-            android:text="Q//which language do you know???"/>
+            tools:text="Q//which language do you know???"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,21 +42,23 @@
             <RadioGroup
                 android:id="@+id/rg_options"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="20dp">
 
             </RadioGroup>
 
         </LinearLayout>
         <Button
             android:id="@+id/bt_submit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="Submit"
-            android:background="@color/colorGrey"
-            android:textColor="@color/colorPrimaryText"
+            android:textSize="18sp"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorWhite"
             android:layout_gravity="right"/>
     </LinearLayout>
 
 </LinearLayout>
-</LinearLayout>
+<!--</LinearLayout>-->

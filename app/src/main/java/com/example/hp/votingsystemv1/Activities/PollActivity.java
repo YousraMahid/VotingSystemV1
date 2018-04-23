@@ -47,7 +47,7 @@ public class PollActivity extends AppCompatActivity implements LoaderManager.Loa
         question.setText(getIntent().getStringExtra("QUESTION"));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        setTitle("Poll");
+        setTitle(getIntent().getStringExtra("TITLE"));
 
         submitBTN.setOnClickListener(new View.OnClickListener() {
             @Override
