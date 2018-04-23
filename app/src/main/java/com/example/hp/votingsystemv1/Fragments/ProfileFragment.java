@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -60,7 +61,7 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
         gender=view.findViewById(R.id.gender_spinner);
         date=view.findViewById(R.id.date_text_view);
         department=view.findViewById(R.id.department_spinner);
-        editCity=view.findViewById(R.id.ed_city);
+      //TODO spinner for city
         editEmail=view.findViewById(R.id.ed_email);
         editPass=view.findViewById(R.id.ed_pass);
         editPhone=view.findViewById(R.id.ed_phone);
@@ -89,6 +90,23 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
 
 
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.edit:
+
+                break;
+
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
     private void updateUI(String data){
 
         try {
@@ -132,10 +150,10 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
                 }else
                     editPhone.setText("");
 
-                if (object.has("city")){
-                    editCity.setText(object.getString("city"));
-                }else
-                    editCity.setText("");
+//                if (object.has("city")){
+//                    editCity.setText(object.getString("city"));
+//                }else
+//                    editCity.setText("");
 
                 if (object.has("birthdate")){
                     date.setText(object.getString("birthdate"));

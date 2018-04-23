@@ -94,6 +94,7 @@
                 android:background="@drawable/edit_text_shape"
                 android:ellipsize="start"
                 android:padding="8dp"
+                android:editable="false"
                 tools:text="shahidatalip4@gmail.com"
                 android:textSize="16dp" />
 
@@ -112,6 +113,7 @@
                 android:ellipsize="start"
                 android:inputType="textPassword"
                 android:padding="8dp"
+                android:editable="false"
                 tools:text="1223dknk"
                 android:textSize="16dp" />
 
@@ -125,7 +127,8 @@
             <Spinner
                 android:id="@+id/department_spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:clickable="false"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -171,7 +174,8 @@
                     <Spinner
                         android:id="@+id/gender_spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"></Spinner>
+                        android:layout_height="wrap_content"
+                        android:clickable="false"></Spinner>
                 </LinearLayout>
 
             </LinearLayout>
@@ -204,6 +208,7 @@
                     android:background="@drawable/edit_text_shape"
                     android:inputType="numberDecimal"
                     android:padding="8dp"
+                    android:editable="false"
                     tools:text="750 155 2581"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -215,15 +220,16 @@
                 android:text="City"
                 android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/ed_city"
+            <Spinner
+                android:id="@+id/city_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edit_text_shape"
                 android:padding="8dp"
                 tools:text="Hawler"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:clickable="false"></Spinner>
 
 
         </LinearLayout>
