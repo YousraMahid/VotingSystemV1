@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.hp.votingsystemv1.R;
 
-public class SignupActivit extends AppCompatActivity implements View.OnClickListener{
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView linkSignin;
     AppCompatButton btnSignin;
@@ -39,12 +39,12 @@ public class SignupActivit extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.link_login:
-                Intent intent=new Intent(SignupActivit.this,SigninActivity.class);
+                Intent intent=new Intent(SignupActivity.this,SigninActivity.class);
                 startActivity(intent);
                 finish();
                 break;
             case R.id.btn_signup:
-                Intent intentMain=new Intent(SignupActivit.this,ConfirmProfileActivity.class);
+                Intent intentMain=new Intent(SignupActivity.this,ConfirmProfileActivity.class);
                 startActivity(intentMain);
                 finish();
                 break;

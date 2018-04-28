@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SignupActivit" />
+        <activity android:name=".Activities.SignupActivity" />
         <activity android:name=".Activities.PollActivity" />
         <activity android:name=".Activities.ConfirmProfileActivity" />
         <activity
