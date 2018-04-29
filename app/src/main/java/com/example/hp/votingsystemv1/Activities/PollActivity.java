@@ -49,6 +49,12 @@ public class PollActivity extends AppCompatActivity implements LoaderManager.Loa
         setTitle(getIntent().getStringExtra("TITLE"));
         SharedPreferences sharedPreferences = getSharedPreferences("USER", MODE_PRIVATE);
         user_id = sharedPreferences.getString("USER_ID", "");
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        final NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+        if (info == null || !info.isConnected()) {
+            Toast.makeText(this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
+        } else
+            getSupportLoaderManager().initLoader(0, null, PollActivity.this).forceLoad();
 
         submitBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +62,7 @@ public class PollActivity extends AppCompatActivity implements LoaderManager.Loa
                 if (optionsRG.getCheckedRadioButtonId() != -1) {
                     optionID = String.valueOf(optionsRG.getCheckedRadioButtonId());
 
-                    ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                    NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+
 
                     if (info == null || !info.isConnected()) {
                         Toast.makeText(PollActivity.this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
@@ -69,12 +74,7 @@ public class PollActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = connectivityManager.getActiveNetworkInfo();
-        if (info == null || !info.isConnected()) {
-            Toast.makeText(this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
-        } else
-            getSupportLoaderManager().initLoader(0, null, PollActivity.this).forceLoad();
+
     }
 
     @Override
