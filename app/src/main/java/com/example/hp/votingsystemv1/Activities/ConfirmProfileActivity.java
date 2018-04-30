@@ -12,7 +12,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.FloatingActionButton;
@@ -20,18 +19,16 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.content.FileProvider;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -40,14 +37,11 @@ import android.widget.Toast;
 import com.example.hp.votingsystemv1.Loaders.DepartmentsAsyncTaskLoader;
 import com.example.hp.votingsystemv1.R;
 import com.squareup.picasso.Picasso;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -71,30 +65,22 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
     SharedPreferences.Editor editor;
     //component
     FloatingActionButton bChangePic;
-    TextInputLayout email;
     LinearLayout root;
-    TextInputLayout fName;
-    TextInputLayout lName;
-    TextInputLayout phone;
-    TextInputLayout dob;
-    Spinner department;
-    Spinner gender;
-    Spinner city;
+    TextInputLayout fName,lName,phone,dob;
+    Spinner department, cities, genders;
     Button submit;
     CircleImageView userImage;
-    TextView departmentError;
-    TextView intentGallery;
-    TextView intentCamera;
+    TextView departmentError,intentGallery,intentCamera,emailTV;
     LinearLayout intentsChooserContainer;
+    String email,firstName,lastName,DOB,gender,city,password,departmentString,phoneNumber;
 
 
 
 
     public void reference() {
         department = findViewById(R.id.material_spinner1);
-        city = findViewById(R.id.spinner_cities);
-        gender = findViewById(R.id.spinner_gender);
-        email=findViewById(R.id.et_email);
+        cities = findViewById(R.id.spinner_cities);
+        genders = findViewById(R.id.spinner_gender);
         fName=findViewById(R.id.et_f_name);
         lName=findViewById(R.id.et_l_name);
         phone=findViewById(R.id.et_phone_number);
@@ -107,6 +93,7 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
         intentGallery=findViewById(R.id.intent_gallery);
         bChangePic=findViewById(R.id.b_change_picture);
         root=findViewById(R.id.root);
+        emailTV=findViewById(R.id.tv_email);
 
 
     }
@@ -116,6 +103,8 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_profile);
         reference();
+        email=getIntent().getStringExtra("EMAIL");
+        emailTV.setText(email);
 
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo info = connectivityManager.getActiveNetworkInfo();
@@ -125,10 +114,31 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
             getSupportLoaderManager().initLoader(0, null, ConfirmProfileActivity.this).forceLoad();
 
         //submit action
+        lName.getEditText().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 validationAndPush();
+                firstName=fName.getEditText().getText().toString();
+                lastName=lName.getEditText().getText().toString();
+                phoneNumber=phone.getEditText().getText().toString();
+                DOB=dob.getEditText().getText().toString();
+
                 Intent intent=new Intent(ConfirmProfileActivity.this,MainActivity.class);
                 startActivity(intent);
             }
@@ -224,13 +234,13 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
         boolean valid=true;
 
         //Email Validation
-        if(email.getEditText().getText().toString().isEmpty()){
-            email.getEditText().setError(EMPTY);
-            valid=false;
-        }else if(! email.getEditText().getText().toString().matches(EMAIL_REGEX)){
-            email.getEditText().setError(INVALID);
-            valid=false;
-        }
+//        if(email.getEditText().getText().toString().isEmpty()){
+//            email.getEditText().setError(EMPTY);
+//            valid=false;
+//        }else if(! email.getEditText().getText().toString().matches(EMAIL_REGEX)){
+//            email.getEditText().setError(INVALID);
+//            valid=false;
+//        }
 
         //First Name Validator
         if (fName.getEditText().getText().toString().isEmpty()) {
