@@ -11,7 +11,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class SignUpAsyncTaskLoader extends AsyncTaskLoader {
+public class SignUpAsyncTaskLoader extends AsyncTaskLoader<String> {
     String email;
     public SignUpAsyncTaskLoader(Context context,String email) {
         super(context);
@@ -19,7 +19,7 @@ public class SignUpAsyncTaskLoader extends AsyncTaskLoader {
     }
 
     @Override
-    public Object loadInBackground() {
+    public String loadInBackground() {
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");

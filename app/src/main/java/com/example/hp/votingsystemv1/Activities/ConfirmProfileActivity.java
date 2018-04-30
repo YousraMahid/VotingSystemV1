@@ -4,9 +4,12 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,7 +19,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.FileProvider;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -32,9 +37,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hp.votingsystemv1.Loaders.DepartmentsAsyncTaskLoader;
 import com.example.hp.votingsystemv1.R;
 import com.squareup.picasso.Picasso;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,7 +56,7 @@ import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ConfirmProfileActivity extends AppCompatActivity {
+public class ConfirmProfileActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
     private static final String EMAIL_REGEX = "^[a-zA-Z]+[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.{1}[a-zA-Z0-9-.]{2,}(?<!\\.)$";
     private Calendar mCalendar;
     private static final int ACTIVITY_REQUEST_CODE_CAMERA = 1991;
@@ -106,6 +116,13 @@ public class ConfirmProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_profile);
         reference();
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        final NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+        if (info == null || !info.isConnected()) {
+            Toast.makeText(this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
+        } else
+            getSupportLoaderManager().initLoader(0, null, ConfirmProfileActivity.this).forceLoad();
 
         //submit action
         submit.setOnClickListener(new View.OnClickListener() {
@@ -396,7 +413,43 @@ public class ConfirmProfileActivity extends AppCompatActivity {
                     }
                 }
 
+    @Override
+    public Loader<String> onCreateLoader(int id, Bundle args) {
+        return new DepartmentsAsyncTaskLoader(this);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<String> loader, String data) {
+        if (data!=null||!data.isEmpty()){
+            updateUI(data);
+        }else
+            Toast.makeText(this, "there might be an error in connection", Toast.LENGTH_SHORT).show();
+    }
+
+    private void updateUI(String data){
+        ArrayList<String> departments=new ArrayList<>();
+        departments.add("Departments");
+        try {
+            JSONArray rootArray=new JSONArray(data);
+            for (int i = 0; i <rootArray.length() ; i++) {
+                JSONObject rootObject=rootArray.getJSONObject(i);
+                if (rootObject.has("department_name"))
+                    departments.add(rootObject.getString("department_name"));
+                else
+                    departments.add("");
             }
+            ArrayAdapter<String> departmentsAdapter=new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,departments);
+            department.setAdapter(departmentsAdapter);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<String> loader) {
+
+    }
+}
 
 
 
