@@ -13,8 +13,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ConfirmProfileAsyncTaskLoader extends AsyncTaskLoader<String> {
-    String email,firstName,lastName,phoneNo,birthdate,gender,city,password,department_name;
-    public ConfirmProfileAsyncTaskLoader(Context context,String email,String firstName,String lastName,String phoneNo,String birthdate,String gender, String city,String password,String department_name) {
+    String email,firstName,lastName,phoneNo,birthdate,gender,city,password,department_name,image;
+    public ConfirmProfileAsyncTaskLoader(Context context,String email,String firstName,String lastName,String phoneNo,String birthdate,String gender, String city,String password,String department_name,String image) {
         super(context);
         this.email=email;
         this.firstName=firstName;
@@ -25,6 +25,7 @@ public class ConfirmProfileAsyncTaskLoader extends AsyncTaskLoader<String> {
         this.city=city;
         this.password=password;
         this.department_name=department_name;
+        this.image=image;
     }
 
     @Override
@@ -40,6 +41,7 @@ public class ConfirmProfileAsyncTaskLoader extends AsyncTaskLoader<String> {
                 " name=\"birthdate\"\r\n\r\n"+birthdate+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"gender\"\r\n\r\n"+gender+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"city\"\r\n\r\n"+city+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
+                " name=\"image\"\r\n\r\n"+image+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"password\"\r\n\r\n"+password+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"department_name\"\r\n\r\n"+department_name+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
         Request request = new Request.Builder()

@@ -3,11 +3,14 @@ package com.example.hp.votingsystemv1.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -48,7 +51,7 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
     Spinner department;
     String fName;
     String stringDepartment;
-    String lName;
+    String lName,image;
     ArrayList<String> genderList;
     String stringGender;
     ArrayList<String> departments;
@@ -73,9 +76,7 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
         fNameLName=view.findViewById(R.id.et_display_name);
         profileImage=view.findViewById(R.id.iv_display_image);
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("USER", Context.MODE_PRIVATE);
-        Uri imageUri = Uri.parse(sharedPreferences.getString("IMAGE", ""));
 
-        Picasso.get().load(imageUri).into(profileImage);
 
 
         genderList=new ArrayList<>();
@@ -159,6 +160,19 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
                     editPhone.setText(object.getString("phone_no"));
                 }else
                     editPhone.setText("");
+
+                if (object.has("image"))
+                    image=object.getString("image");
+                else
+                    image="";
+
+                byte[] imageAsBytes = Base64.decode(image.getBytes(), Base64.DEFAULT);
+                Bitmap imageBit= BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+                profileImage.setImageBitmap(imageBit);
+//                Uri imageUri = Uri.parse(sharedPreferences.getString("IMAGE", ""));
+//
+//                Picasso.get().load(imageUri).into(profileImage);
+
 
 //                if (object.has("city")){
 //                    editCity.setText(object.getString("city"));

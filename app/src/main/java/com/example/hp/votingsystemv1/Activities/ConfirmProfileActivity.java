@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -23,6 +24,7 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,6 +45,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -71,10 +75,12 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
     TextInputLayout fName,lName,phone,dob;
     Spinner department, cities, genders;
     Button submit;
+    String imageText;
     CircleImageView userImage;
     TextView departmentError,intentGallery,intentCamera,emailTV;
     LinearLayout intentsChooserContainer;
     String email,firstName,lastName,DOB,gender,city,password,departmentString,phoneNumber;
+    Bitmap image;
 
 
 
@@ -420,7 +426,18 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
                 case ACTIVITY_REQUEST_CODE_GALLERY:
                             Toast.makeText(this, "image selected", Toast.LENGTH_SHORT).show();
                             uri = imageReturnedIntent.getData();
-                            editor.putString("IMAGE",String.valueOf(uri));
+                    try {
+                        image=MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                        byte[] byteArray = byteArrayOutputStream .toByteArray();
+
+                        imageText = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                        Log.v("hello","image"+imageText);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    editor.putString("IMAGE",String.valueOf(uri));
                             editor.apply();
 
                             Picasso.get().load(String.valueOf(uri)).into(userImage);
@@ -436,7 +453,7 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
         if (id==0)
         return new DepartmentsAsyncTaskLoader(this);
         else
-            return new ConfirmProfileAsyncTaskLoader(this,email,firstName,lastName,phoneNumber,DOB,gender,city,password,departmentString);
+            return new ConfirmProfileAsyncTaskLoader(this,email,firstName,lastName,phoneNumber,DOB,gender,city,password,departmentString,imageText);
     }
 
     @Override
