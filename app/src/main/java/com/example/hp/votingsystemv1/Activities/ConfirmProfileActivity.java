@@ -34,6 +34,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hp.votingsystemv1.Loaders.ConfirmProfileAsyncTaskLoader;
 import com.example.hp.votingsystemv1.Loaders.DepartmentsAsyncTaskLoader;
 import com.example.hp.votingsystemv1.R;
 import com.squareup.picasso.Picasso;
@@ -42,6 +43,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -106,6 +108,8 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
         email=getIntent().getStringExtra("EMAIL");
         emailTV.setText(email);
 
+
+
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo info = connectivityManager.getActiveNetworkInfo();
         if (info == null || !info.isConnected()) {
@@ -114,22 +118,6 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
             getSupportLoaderManager().initLoader(0, null, ConfirmProfileActivity.this).forceLoad();
 
         //submit action
-        lName.getEditText().addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,7 +125,27 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
                 firstName=fName.getEditText().getText().toString();
                 lastName=lName.getEditText().getText().toString();
                 phoneNumber=phone.getEditText().getText().toString();
-                DOB=dob.getEditText().getText().toString();
+                gender=genders.getSelectedItem().toString();
+                city=cities.getSelectedItem().toString();
+                password=getIntent().getStringExtra("PASSWORD");
+                departmentString=department.getSelectedItem().toString();
+                String mytime=dob.getEditText().getText().toString();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date myDate = null;
+                try {
+                    myDate = dateFormat.parse(mytime);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd");
+                DOB = timeFormat.format(myDate);
+
+                if (info == null || !info.isConnected()) {
+                    Toast.makeText(ConfirmProfileActivity.this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
+                } else
+                    getSupportLoaderManager().initLoader(1, null, ConfirmProfileActivity.this).forceLoad();
 
                 Intent intent=new Intent(ConfirmProfileActivity.this,MainActivity.class);
                 startActivity(intent);
@@ -425,13 +433,21 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
 
     @Override
     public Loader<String> onCreateLoader(int id, Bundle args) {
+        if (id==0)
         return new DepartmentsAsyncTaskLoader(this);
+        else
+            return new ConfirmProfileAsyncTaskLoader(this,email,firstName,lastName,phoneNumber,DOB,gender,city,password,departmentString);
     }
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
         if (data!=null||!data.isEmpty()){
+            if (loader.getId()==0)
             updateUI(data);
+            else{
+                getSupportLoaderManager().destroyLoader(1);
+                Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
+            }
         }else
             Toast.makeText(this, "there might be an error in connection", Toast.LENGTH_SHORT).show();
     }

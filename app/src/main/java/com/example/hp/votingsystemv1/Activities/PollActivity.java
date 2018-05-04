@@ -125,6 +125,7 @@ public class PollActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<String> loader, String data) {
         if (data != null && !data.isEmpty()) {
             if (loader.getId() == 0) {
+                getSupportLoaderManager().destroyLoader(1);
                 updateUI(data);
                 Log.v("OPTIONS_DATA", data);
             } else {

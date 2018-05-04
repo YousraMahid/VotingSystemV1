@@ -2,6 +2,7 @@ package com.example.hp.votingsystemv1.Loaders;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -19,18 +20,22 @@ public class SigninAsyncTaskLoader extends AsyncTaskLoader<String> {
 
     String email;
     String password;
-    public SigninAsyncTaskLoader(Context context,String email,String password) {
+
+    public SigninAsyncTaskLoader(Context context, String email, String password) {
         super(context);
-        this.email=email;
-        this.password=password;
+        this.email = email;
+        this.password = password;
     }
 
     @Override
     public String loadInBackground() {
+
+        Log.v("hello","Email: "+email);
+        Log.v("hello", "Pass: "+password);
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
-        RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"email\"\r\n\r\n"+email+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n"+password+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
+        RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"email\"\r\n\r\n" + email + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\n" + password + "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--");
         Request request = new Request.Builder()
                 .url("http://awrosoft.krd/voting/voting/API/login.php")
                 .post(body)
@@ -47,5 +52,5 @@ public class SigninAsyncTaskLoader extends AsyncTaskLoader<String> {
         }
         return null;
     }
-    }
+}
 
