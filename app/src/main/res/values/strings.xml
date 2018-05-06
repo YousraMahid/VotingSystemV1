@@ -18,7 +18,7 @@
     <string name="neutral_hint">Umm…\nTell us how can we make it better?</string>
     <string name="general_settings">Settings</string>
 
-<!--string registaration-->
+    <!--string registaration-->
 
     <string name="this_field_is_required">This field is required</string>
     <string name="invalid_input">Invalid input</string>

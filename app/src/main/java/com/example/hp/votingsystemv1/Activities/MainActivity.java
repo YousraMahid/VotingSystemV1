@@ -2,6 +2,8 @@ package com.example.hp.votingsystemv1.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +14,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
+    CircleImageView profilePhoto;
 
 
 
@@ -73,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
 
+
+
+
          drawer = findViewById(R.id.drawer_layout);
          toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -83,6 +90,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+//        View drawerHeader=navigationView.getHeaderView(R.layout.nav_header);
+//        profilePhoto=drawerHeader.findViewById(R.id.iv_display_image_header);
+//        SharedPreferences sharedPreferences=getSharedPreferences("USER",MODE_PRIVATE);
+//        String imageText=sharedPreferences.getString("IMAGE","");
+//        byte[] imageAsBytes = Base64.decode(imageText.getBytes(), Base64.DEFAULT);
+//        Bitmap imageBit= BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+//        profilePhoto.setImageBitmap(imageBit);
+
 
 
         BottomNavigationView navigation =findViewById(R.id.navigation);

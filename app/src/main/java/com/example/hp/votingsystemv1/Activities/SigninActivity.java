@@ -202,7 +202,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                         editor.putString("EMAIL", email);
                         editor.apply();
 
-                        Intent intentMain = new Intent(SigninActivity.this, MainActivity.class);
+                        Intent intentMain = new Intent(SigninActivity.this, WaitingActivity.class);
                         startActivity(intentMain);
 
 

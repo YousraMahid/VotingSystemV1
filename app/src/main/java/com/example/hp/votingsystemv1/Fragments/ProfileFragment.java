@@ -56,6 +56,7 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
     String stringGender;
     ArrayList<String> departments;
     ImageView profileImage;
+    SharedPreferences sharedPreferences;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -75,8 +76,7 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
         editPhone=view.findViewById(R.id.ed_phone);
         fNameLName=view.findViewById(R.id.et_display_name);
         profileImage=view.findViewById(R.id.iv_display_image);
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("USER", Context.MODE_PRIVATE);
-
+        sharedPreferences = getActivity().getSharedPreferences("USER", Context.MODE_PRIVATE);
 
 
         genderList=new ArrayList<>();
@@ -169,6 +169,11 @@ public class ProfileFragment extends Fragment implements android.support.v4.app.
                 byte[] imageAsBytes = Base64.decode(image.getBytes(), Base64.DEFAULT);
                 Bitmap imageBit= BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
                 profileImage.setImageBitmap(imageBit);
+
+                sharedPreferences.edit().putString("IMAGE",image);
+
+
+
 //                Uri imageUri = Uri.parse(sharedPreferences.getString("IMAGE", ""));
 //
 //                Picasso.get().load(imageUri).into(profileImage);

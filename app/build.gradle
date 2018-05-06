@@ -19,7 +19,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         manifestPlaceholders = [
-                onesignal_app_id: '320de5e9-5a6c-4e8b-9a59-073bdc562ff2',
+                onesignal_app_id               : '320de5e9-5a6c-4e8b-9a59-073bdc562ff2',
                 // Project number pulled from dashboard, local value is ignored.
                 onesignal_google_project_number: 'REMOTE'
         ]
