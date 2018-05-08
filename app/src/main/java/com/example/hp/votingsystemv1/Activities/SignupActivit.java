@@ -44,6 +44,8 @@ public class SignupActivit extends AppCompatActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.btn_signup:
+                // lera yaksar xlas dabi 3amlyay sign upaka?aa wab, aw sign upa chand asana hhhhh hh na yak dawaqa
+                SigninActivity.setUserAuthenticacity(SignupActivit.this,true);
                 Intent intentMain=new Intent(SignupActivit.this,ConfirmProfileActivity.class);
                 startActivity(intentMain);
                 finish();
