@@ -113,7 +113,7 @@
                 android:ellipsize="start"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:editable="false"
+               android:editable="false"
                 tools:text="1223dknk"
                 android:textSize="16dp" />
 
@@ -175,7 +175,7 @@
                         android:id="@+id/gender_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="false"></Spinner>
+                        android:clickable="false"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -229,7 +229,7 @@
                 android:padding="8dp"
                 tools:text="Hawler"
                 android:textSize="18sp"
-                android:clickable="false"></Spinner>
+                android:clickable="false"/>
 
 
         </LinearLayout>
