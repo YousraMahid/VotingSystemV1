@@ -27,6 +27,8 @@ import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -128,33 +130,31 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
             @Override
             public void onClick(View view) {
                 validationAndPush();
-                firstName=fName.getEditText().getText().toString();
-                lastName=lName.getEditText().getText().toString();
-                phoneNumber=phone.getEditText().getText().toString();
-                gender=genders.getSelectedItem().toString();
-                city=cities.getSelectedItem().toString();
-                password=getIntent().getStringExtra("PASSWORD");
-                departmentString=department.getSelectedItem().toString();
-                String mytime=dob.getEditText().getText().toString();
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                Date myDate = null;
-                try {
-                    myDate = dateFormat.parse(mytime);
+//                firstName=fName.getEditText().getText().toString();
+//                lastName=lName.getEditText().getText().toString();
+//                phoneNumber=phone.getEditText().getText().toString();
+//                gender=genders.getSelectedItem().toString();
+//                city=cities.getSelectedItem().toString();
+//                password=getIntent().getStringExtra("PASSWORD");
+//                departmentString=department.getSelectedItem().toString();
+//                String mytime=dob.getEditText().getText().toString();
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//                Date myDate = null;
+//                try {
+//                    myDate = dateFormat.parse(mytime);
+//
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
+//
+//                SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                DOB = timeFormat.format(myDate);
+//
+//                if (info == null || !info.isConnected()) {
+//                    Toast.makeText(ConfirmProfileActivity.this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
+//                } else
+//                    getSupportLoaderManager().initLoader(1, null, ConfirmProfileActivity.this).forceLoad();
 
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-                SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd");
-                DOB = timeFormat.format(myDate);
-
-                if (info == null || !info.isConnected()) {
-                    Toast.makeText(ConfirmProfileActivity.this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
-                } else
-                    getSupportLoaderManager().initLoader(1, null, ConfirmProfileActivity.this).forceLoad();
-
-                Intent intent=new Intent(ConfirmProfileActivity.this,MainActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -306,23 +306,23 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
         }
 
 //        //Image Validator
-//        if (userImage.getTag() == null) {
-//            if (!isAnimating) {
-//                isAnimating = true;
-//               userImage.animate().yBy(-50).setInterpolator(new DecelerateInterpolator()).setDuration(200).withEndAction(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                   userImage.animate().yBy(50).setInterpolator(new BounceInterpolator()).setDuration(400).withEndAction(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                isAnimating = false;
-//                            }
-//                        }).start();
-//                    }
-//                }).start();
-//            }
-//            valid = false;
-//        }
+        if (userImage.getTag() == null) {
+            if (!isAnimating) {
+                isAnimating = true;
+               userImage.animate().yBy(-50).setInterpolator(new DecelerateInterpolator()).setDuration(200).withEndAction(new Runnable() {
+                    @Override
+                    public void run() {
+                   userImage.animate().yBy(50).setInterpolator(new BounceInterpolator()).setDuration(400).withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                isAnimating = false;
+                            }
+                        }).start();
+                    }
+                }).start();
+            }
+            valid = false;
+        }
 
         //Push Data
         if (valid) {
