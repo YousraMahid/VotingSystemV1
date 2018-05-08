@@ -48,6 +48,11 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+
+
+       checkIfUserIsLoggedBefore();
+
+
         reference();
 
         editor = getSharedPreferences("USER", MODE_PRIVATE).edit();
@@ -94,7 +99,16 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
 
         Thread thread = new Thread(new Runnable() {
             @Override
-            public void run() {
+            public void run() {//awa Introya 3ilaqay ba loginawa niya
+                // axr ama eshakay har bawa dakayn , sairka
+                // ka user log in bu, lanaw sharePref booleanek xazn dakain ba isLOgged
+                // yany dway away ba sarkawtuyi log in bu, valuekay dakaina true,
+                // ka log out buwa, valuekay dakaina flase
+                // wabi ka next time the user opens the app, it checks the value of isLogged
+                // and its flase, then it will open up the login actibity
+                // waz3a?balle
+                // bika yan ango daikan?walla agar btani zor bash dabi
+                // tamam yak daqa
 
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
                 boolean isFirstTime = preferences.getBoolean("first", true);
@@ -114,6 +128,15 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         btn_login.setOnClickListener(this);
 
 
+    }
+
+    private void checkIfUserIsLoggedBefore() {
+        SharedPreferences sharedPreferences  = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean  isUserLoggedBefore = sharedPreferences.getBoolean("isLogged",false);
+        if(isUserLoggedBefore){
+            startActivity(new Intent(this,MainActivity.class));
+            finish();
+        }
     }
 
     @Override
@@ -203,7 +226,14 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                         editor.apply();
 
                         Intent intentMain = new Intent(SigninActivity.this, WaitingActivity.class);
+
+
+                      setUserAuthenticacity(this,true);
+
+
+                        Intent intentMain = new Intent(SigninActivity.this, MainActivity.class);
                         startActivity(intentMain);
+                        finish();
 
 
                     }
@@ -213,6 +243,13 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
             }
         } else
             Toast.makeText(this, "there might be poor internet connection", Toast.LENGTH_SHORT).show();
+    }
+
+    public static void setUserAuthenticacity(Context context, boolean isUserLogged) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("isLogged",isUserLogged);
+        editor.apply();
     }
 
     @Override

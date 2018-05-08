@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -134,6 +135,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout) {
+            SigninActivity.setUserAuthenticacity(this,false);
+
             startActivity(new Intent(this, SigninActivity.class));
             finish();
         }
