@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
@@ -19,13 +20,14 @@ import com.example.hp.votingsystemv1.Loaders.SignUpAsyncTaskLoader;
 import com.example.hp.votingsystemv1.R;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener,LoaderManager.LoaderCallbacks<String>{
-
+    private static final String EMAIL_REGEX = "^[a-zA-Z]+[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.{1}[a-zA-Z0-9-.]{2,}(?<!\\.)$";
     TextView linkSignin;
     AppCompatButton btnSignin;
     EditText inputEmailET;
     EditText inputPasswordET;
     String email;
     String password;
+    TextInputLayout inputEmail;
 
 
 
@@ -35,6 +37,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         btnSignin =findViewById(R.id.btn_signup);
         inputEmailET=findViewById(R.id.input_email);
         inputPasswordET=findViewById(R.id.input_password);
+        inputEmail=findViewById(R.id.edit_input_email);
     }
 
 
@@ -60,15 +63,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
             case R.id.btn_signup:
-                email=inputEmailET.getText().toString();
-                password=inputPasswordET.getText().toString();
-                ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                final NetworkInfo info = connectivityManager.getActiveNetworkInfo();
-                if (info == null || !info.isConnected()) {
-                    Toast.makeText(this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
-                } else
-                    getSupportLoaderManager().initLoader(0, null, SignupActivity.this).forceLoad();
-
+                validationAndPush();
                 break;
         }
 
@@ -100,4 +95,34 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     public void onLoaderReset(Loader<String> loader) {
 
     }
+
+    private void validationAndPush() {
+        final String EMPTY = getString(R.string.this_field_is_required);
+        final String INVALID = getString(R.string.invalid_input);
+
+        boolean valid = true;
+
+        //Email Validation
+        if(inputEmail.getEditText().getText().toString().isEmpty()){
+            inputEmail.getEditText().setError(EMPTY);
+            valid=false;
+        }else if(! inputEmail.getEditText().getText().toString().matches(EMAIL_REGEX)){
+            inputEmail.getEditText().setError(INVALID);
+            valid=false;
+        }
+
+
+        if (valid) {
+            email=inputEmailET.getText().toString();
+            password=inputPasswordET.getText().toString();
+            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            final NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+            if (info == null || !info.isConnected()) {
+                Toast.makeText(this, "there is no internet Connection", Toast.LENGTH_SHORT).show();
+            } else
+                getSupportLoaderManager().initLoader(0, null, SignupActivity.this).forceLoad();
+        }
+
+    }
+
 }

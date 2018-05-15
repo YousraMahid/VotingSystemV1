@@ -1,12 +1,14 @@
 package com.example.hp.votingsystemv1.Activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -70,7 +72,7 @@ public class PollActivity extends AppCompatActivity implements LoaderManager.Loa
                         getSupportLoaderManager().initLoader(1, null, PollActivity.this).forceLoad();
                     }
                 } else
-                    Toast.makeText(PollActivity.this, "Faiiledsubmitted vote", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PollActivity.this, "Failed to submit the vote", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -130,10 +132,17 @@ public class PollActivity extends AppCompatActivity implements LoaderManager.Loa
                 Log.v("OPTIONS_DATA", data);
             } else {
                 getSupportLoaderManager().destroyLoader(1);
-                Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
-            }
+                new AlertDialog.Builder(PollActivity.this)
+                        .setTitle("")
+                        .setMessage(data)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                dialog.cancel();
+                            }
+                        }).show();            }
         } else
-            Toast.makeText(this, "there is no internet connection6", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "there is no internet connection", Toast.LENGTH_SHORT).show();
 
     }
 

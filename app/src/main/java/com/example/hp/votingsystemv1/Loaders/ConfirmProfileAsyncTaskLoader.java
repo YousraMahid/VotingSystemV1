@@ -3,6 +3,7 @@ package com.example.hp.votingsystemv1.Loaders;
 import android.content.Context;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -32,11 +33,22 @@ public class ConfirmProfileAsyncTaskLoader extends AsyncTaskLoader<String> {
     public String loadInBackground() {
         OkHttpClient client = new OkHttpClient();
 
+        Log.v("hello","email: "+email);
+        Log.v("hello","firstName: "+firstName);
+        Log.v("hello","lastName: "+lastName);
+        Log.v("hello","phone: "+phoneNo);
+        Log.v("hello","birthdate: "+birthdate);
+        Log.v("hello","gender: "+gender);
+        Log.v("hello","city: "+city);
+        Log.v("hello","password: "+password);
+        Log.v("hello","department: "+department_name);
+        Log.v("hello","image: "+image);
+
         MediaType mediaType = MediaType.parse("multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
         RequestBody body = RequestBody.create(mediaType, "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"email\"\r\n\r\n"+email+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"firstName\"\r\n\r\n"+firstName+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; " +
-                "name=\"lastName\"\r\n\r\n"+lastName+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
+                " name=\"lastName\"\r\n\r\n"+lastName+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"phoneNo\"\r\n\r\n"+phoneNo+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"birthdate\"\r\n\r\n"+birthdate+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +
                 " name=\"gender\"\r\n\r\n"+gender+"\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;" +

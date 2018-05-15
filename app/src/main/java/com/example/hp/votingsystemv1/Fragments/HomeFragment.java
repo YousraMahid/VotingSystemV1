@@ -2,6 +2,7 @@ package com.example.hp.votingsystemv1.Fragments;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.hp.votingsystemv1.Activities.MainActivity;
 import com.example.hp.votingsystemv1.Activities.PollActivity;
 import com.example.hp.votingsystemv1.Adapters.HomeAdapter;
 import com.example.hp.votingsystemv1.Loaders.HomeAsyncTaskLoader;
@@ -118,9 +121,18 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
                     intent.putExtra("POLL_ID", pollId);
                     intent.putExtra("TITLE", title);
                     startActivity(intent);
-                } else
-                    Toast.makeText(getContext(), "The time for this poll is finished", Toast.LENGTH_SHORT).show();
+                } else {
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("")
+                            .setMessage("The time for this poll finish")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    dialog.cancel();
+                                }
+                            }).show();
                 }
+            }
         });
 
 
@@ -175,6 +187,7 @@ public class HomeFragment extends Fragment implements LoaderManager.LoaderCallba
                 else pollId = "";
 
 
+                Log.v("EndTime",endTime);
                 Home home = new Home(pollId, subject, question, startTime, endTime, currentTime);
                 homeArrayList.add(home);
             }

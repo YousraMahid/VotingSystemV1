@@ -121,7 +121,7 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo info = connectivityManager.getActiveNetworkInfo();
         if (info == null || !info.isConnected()) {
-            Toast.makeText(this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "there is no internet Connection", Toast.LENGTH_SHORT).show();
         } else
             getSupportLoaderManager().initLoader(0, null, ConfirmProfileActivity.this).forceLoad();
 
@@ -130,31 +130,7 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
             @Override
             public void onClick(View view) {
                 validationAndPush();
-//                firstName=fName.getEditText().getText().toString();
-//                lastName=lName.getEditText().getText().toString();
-//                phoneNumber=phone.getEditText().getText().toString();
-//                gender=genders.getSelectedItem().toString();
-//                city=cities.getSelectedItem().toString();
-//                password=getIntent().getStringExtra("PASSWORD");
-//                departmentString=department.getSelectedItem().toString();
-//                String mytime=dob.getEditText().getText().toString();
-//                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-//                Date myDate = null;
-//                try {
-//                    myDate = dateFormat.parse(mytime);
 //
-//                } catch (ParseException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd");
-//                DOB = timeFormat.format(myDate);
-//
-//                if (info == null || !info.isConnected()) {
-//                    Toast.makeText(ConfirmProfileActivity.this, "there is no internet Connection4", Toast.LENGTH_SHORT).show();
-//                } else
-//                    getSupportLoaderManager().initLoader(1, null, ConfirmProfileActivity.this).forceLoad();
-
             }
         });
 
@@ -306,26 +282,54 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
         }
 
 //        //Image Validator
-        if (userImage.getTag() == null) {
-            if (!isAnimating) {
-                isAnimating = true;
-               userImage.animate().yBy(-50).setInterpolator(new DecelerateInterpolator()).setDuration(200).withEndAction(new Runnable() {
-                    @Override
-                    public void run() {
-                   userImage.animate().yBy(50).setInterpolator(new BounceInterpolator()).setDuration(400).withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                isAnimating = false;
-                            }
-                        }).start();
-                    }
-                }).start();
-            }
-            valid = false;
-        }
+//        if (userImage.getTag() == null) {
+//            if (!isAnimating) {
+//                isAnimating = true;
+//               userImage.animate().yBy(-50).setInterpolator(new DecelerateInterpolator()).setDuration(200).withEndAction(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                   userImage.animate().yBy(50).setInterpolator(new BounceInterpolator()).setDuration(400).withEndAction(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                isAnimating = false;
+//                            }
+//                        }).start();
+//                    }
+//                }).start();
+//            }
+//            valid = false;
+//        }
 
         //Push Data
         if (valid) {
+
+            firstName=fName.getEditText().getText().toString();
+                lastName=lName.getEditText().getText().toString();
+                phoneNumber=phone.getEditText().getText().toString();
+                gender=genders.getSelectedItem().toString();
+                city=cities.getSelectedItem().toString();
+                password=getIntent().getStringExtra("PASSWORD");
+                departmentString=department.getSelectedItem().toString();
+                String mytime=dob.getEditText().getText().toString();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date myDate = null;
+                try {
+                    myDate = dateFormat.parse(mytime);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd");
+                DOB = timeFormat.format(myDate);
+
+            ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            final NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+            if (info == null || !info.isConnected()) {
+                Toast.makeText(this, "there is no internet Connection", Toast.LENGTH_SHORT).show();
+            } else
+                getSupportLoaderManager().initLoader(1, null, ConfirmProfileActivity.this).forceLoad();
+
             //TODO create user account in database
         }
 
@@ -463,7 +467,12 @@ public class ConfirmProfileActivity extends AppCompatActivity implements LoaderM
             updateUI(data);
             else{
                 getSupportLoaderManager().destroyLoader(1);
-                Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
+                Log.v("ERRORINSUBMIT",data);
+                if (data.equals("1registered successfully")) {
+                    Intent intent = new Intent(ConfirmProfileActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else Toast.makeText(this, "there is a problem with registaration", Toast.LENGTH_SHORT).show();
             }
         }else
             Toast.makeText(this, "there might be an error in connection", Toast.LENGTH_SHORT).show();

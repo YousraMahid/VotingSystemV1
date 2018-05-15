@@ -7,6 +7,7 @@
     tools:context="com.example.hp.votingsystemv1.Fragments.ProfileFragment">
 
     <LinearLayout
+        android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -87,14 +88,13 @@
                 android:text="Email"
                 android:textSize="18dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/ed_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_shape"
                 android:ellipsize="start"
                 android:padding="8dp"
-                android:editable="false"
                 tools:text="shahidatalip4@gmail.com"
                 android:textSize="16dp" />
 
@@ -105,7 +105,7 @@
                 android:text="Password"
                 android:textSize="18dp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/ed_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -171,11 +171,20 @@
                         android:text="Gender"
                         android:textSize="18sp" />
 
-                    <Spinner
-                        android:id="@+id/gender_spinner"
+                    <TextView
+                        android:id="@+id/txt_gender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clickable="false"/>
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/edit_text_shape"
+                        android:padding="8dp" />
+
+
+                    <Spinner
+                        android:id="@+id/gender_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -199,7 +208,7 @@
                     android:text="(+964)"
                     android:textSize="18sp" />
 
-                <EditText
+                <TextView
                     android:id="@+id/ed_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -227,12 +236,14 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/edit_text_shape"
                 android:padding="8dp"
-                tools:text="Hawler"
+                android:entries="@array/city"
                 android:textSize="18sp"
                 android:clickable="false"/>
 
 
         </LinearLayout>
+
+
 
     </LinearLayout>
 
